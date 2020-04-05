@@ -2,12 +2,12 @@ import React from 'react'
 import SearchBox from './SearchBox'
 import Card from './Card'
 import { getAllMovies } from '../utils/api'
+import { Link } from 'react-router-dom';
 
 export default class Reserve extends React.Component {
     state = {
         allMovies: [],
-        filterMovies: [],
-        moviePicked: {}
+        filterMovies: []
     }
     componentDidMount(){
         getAllMovies().then((movies) => {
@@ -22,9 +22,6 @@ export default class Reserve extends React.Component {
             filterMovies: movies
         })
     }
-    pickMovie(movie){
-        this.props.history.push(`/seating/${movie.title}`)
-    }
     render() {
         let { allMovies, filterMovies } = this.state
         return (
@@ -33,12 +30,20 @@ export default class Reserve extends React.Component {
                 <ul className='reserve-container'>
                     {filterMovies.map((movie, i) => {
                         return (
-                            <li key={i} onClick={() => this.pickMovie(movie)}>                                 
+                            <Link 
+                                key={i} 
+                                to={{
+                                    pathname: `/seating/${movie.title}`,
+                                    state: {
+                                        movie: movie
+                                    }
+                                }}
+                            >                                 
                                 <Card
                                     title={movie.title}
                                     poster={movie.poster_path}                            
                                 />
-                            </li>
+                            </Link>
                         )
                     })}
                 </ul>

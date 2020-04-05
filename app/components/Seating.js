@@ -1,18 +1,20 @@
 import React from 'react'
 import queryString from 'query-string'
 
-export default class Seating extends React.Component {
-    getData(){
+export default function Seating() {
+    const [prueba, setPrueba] = React.useState(100)
+    function getData(){
+        setPrueba(prueba + 1)
         //const movie = queryString.parse(this.props.location.search)
-        const movie = this.props.match.params.movie
-        console.log('movie', this.props.match)
+        //const movie = this.props.match.params.movie
+        //console.log('movie', this.props.match)
+        //const { movie } = props.location.state
+       // console.log('movie', movie)
     }
-    render() {
-        this.getData()
-        return (
-            <div>
-                <h3>Hello {this.props.match.params.movie}</h3>
-            </div> 
-        )
-    }
+    return (
+        <div>
+            <h3>{prueba}</h3>
+            <button onClick={() => getData()}>Sumar 1</button>
+        </div> 
+    )
 }

@@ -11,21 +11,20 @@ export default class SearchBox extends React.Component {
     let filteredMovies = this.filterMoviesByTitle(event.target.value)
     this.props.handler(filteredMovies)
   }
+  updateHandler = (sortBy) => {
+    this.props.handler(sortBy)
+  }
   filterByPopularity = () => {
-    let sortByPopular = this.props.movies.sort((a, b) => b.popularity - a.popularity)
-    this.props.handler(sortByPopular)
+    this.updateHandler(this.props.movies.sort((a, b) => b.popularity - a.popularity))
   }
   filterByVoted = () => {
-    let sortByVoted = this.props.movies.sort((a, b) => b.vote_count - a.vote_count)
-    this.props.handler(sortByVoted)
+    this.updateHandler(this.props.movies.sort((a, b) => b.vote_count - a.vote_count))
   }
   filterByAdults = () => {
-    let sortByAdults = this.props.movies.filter((movie, i) => movie.adult && movie)
-    this.props.handler(sortByAdults)
+    this.updateHandler(this.props.movies.filter((movie, i) => movie.adult && movie))
   }
   filterByKids = () => {
-    let sortByKids = this.props.movies.filter((movie, i) => !movie.adult && movie)
-    this.props.handler(sortByKids)
+    this.updateHandler(this.props.movies.filter((movie, i) => !movie.adult && movie))
   }
   render() {
     return (
