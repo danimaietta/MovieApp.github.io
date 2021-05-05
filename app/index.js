@@ -6,22 +6,19 @@ import Reserve from './components/Reserve'
 import Seating from './components/Seating'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-class App extends Component {
-render() {
+function App() {
   return (
     <Router>
       <Nav />
       <Switch>
         <Route exact path='/' component={Reserve} />
         <Route exact path='/seating/:movie' component={Seating} />
-        <Route render={() => <h1 className="flex center row">404 Not Found</h1>} />
+        <Route
+          render={() => <h1 className='flex center row'>404 Not Found</h1>}
+        />
       </Switch>
-    </Router>  
-    )
-  }
+    </Router>
+  )
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-)
+ReactDOM.render(<App />, document.getElementById('app'))
