@@ -1,40 +1,21 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useContext } from 'react'
+import LocaleContext from '../context/LocaleContext'
 
 const activeStyle = {
   color: '#e34646'
 }
 
-export default class Nav extends React.Component {
-  state = {
-    theme: 'light'
+export default function Nav() {
+  const { theme, setTheme } = useContext(LocaleContext)
+  const classBtn = theme == 'light' ? 'light-button' : 'dark-button'
+
+  const toggleTheme = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light')
   }
-  toggleTheme = () => {
-    console.log(`I'll do this later :)`)
-  }
-  render() {
-    return (
-      <nav className='flex row white'>
-        <ul className='flex row white'>
-          <li className='space-between'>
-            <NavLink 
-              to='/'
-              exact
-              activeStyle={activeStyle} 
-              className='nav-link'>
-                  Reserve
-            </NavLink>
-          </li>
-        </ul>
-        <div className='flex end'>
-          <button
-            className='light-button'
-            onClick={this.toggleTheme}
-          >
-            {this.state.theme === 'light' ? '🔦' : '💡'}
-          </button>
-        </div>
-      </nav>    
-    )
-  }
+
+  return (
+    <button className={`switchBtn ${classBtn}`} onClick={toggleTheme}>
+      {theme == 'light' ? '🔦' : '💡'}
+    </button>
+  )
 }

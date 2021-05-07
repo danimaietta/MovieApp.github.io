@@ -37,7 +37,7 @@ export default function Reserve() {
                 }
               }}
             >
-              <Card title={movie.title} poster={movie.poster_path} />
+              <Card poster={movie.poster_path} />
             </Link>
           )
         })}

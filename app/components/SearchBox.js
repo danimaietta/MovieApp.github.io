@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import LocaleContext from '../context/LocaleContext'
 import { FaSearch } from 'react-icons/fa'
 
 export default function SearchBox({ movies, handler }) {
+  const { theme } = useContext(LocaleContext)
+  const classBtn = theme == 'light' ? 'light-button' : 'dark-button'
+
   function filterMoviesByTitle(movieTitle) {
     return movies.filter((movie, i) => {
       if (movie.title.toLowerCase().includes(movieTitle.toLowerCase()))
@@ -12,9 +16,8 @@ export default function SearchBox({ movies, handler }) {
     let filteredMovies = filterMoviesByTitle(event.target.value)
     handler(filteredMovies)
   }
-  const updateHandler = sortBy => {
-    handler(sortBy)
-  }
+  const updateHandler = sortBy => handler(sortBy)
+
   const filterByPopularity = () => {
     updateHandler(movies.sort((a, b) => b.popularity - a.popularity))
   }
@@ -25,26 +28,30 @@ export default function SearchBox({ movies, handler }) {
     updateHandler(movies.filter((movie, i) => movie.adult && movie))
   }
   const filterByKids = () => {
+    console.log('here')
     updateHandler(movies.filter((movie, i) => !movie.adult && movie))
   }
   return (
     <div className='flex center row'>
       <input
-        className='search-input fontawesome'
+        className={`${classBtn} search-input fontawesome`}
         placeholder='&#xf002; Find a movie'
         type='text'
         onChange={handleChange}
       ></input>
-      <button onClick={filterByPopularity} className={`filter-button`}>
+      <button
+        onClick={filterByPopularity}
+        className={`filter-button ${classBtn}`}
+      >
         Most Popular
       </button>
-      <button onClick={filterByVoted} className='filter-button'>
+      <button onClick={filterByVoted} className={`filter-button ${classBtn}`}>
         Most Voted
       </button>
-      <button onClick={filterByAdults} className='filter-button'>
+      <button onClick={filterByAdults} className={`filter-button ${classBtn}`}>
         Adults Only
       </button>
-      <button onClick={filterByKids} className='filter-button'>
+      <button onClick={filterByKids} className={`filter-button ${classBtn}`}>
         Kids
       </button>
     </div>
