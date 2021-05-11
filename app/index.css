@@ -2,15 +2,19 @@
 
 body {
   margin: 0;
+  padding: 0;
   height: 100vh;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .light {
   background-color: rgb(223, 215, 215);
+  color: rgb(29, 28, 28);
 }
 
 .dark {
   background-color: rgb(29, 28, 28);
+  color: rgb(223, 215, 215);
 }
 
 .fontawesome {
@@ -30,6 +34,10 @@ body {
 
 .center {
   justify-content: center;
+}
+
+.y-center {
+  align-items: center;
 }
 
 .space-between {
@@ -63,7 +71,7 @@ li {
 
 /* Search Bar*/
 .search-input {
-  width: 300px;
+  width: 250px;
   font-size: 1em;
   text-indent: 5px;
   border: none;
@@ -117,15 +125,15 @@ button:hover {
   display: grid;
   grid-template-columns: repeat(5, minmax(200px, 350px));
   grid-row-gap: 10px;
-  height: 100%;
   justify-content: center;
+  height: 80vh;
   text-align: center;
   font-family: 'arial';
 }
 
 .not-found-message {
-  display: grid;
-  justify-content: center;
+  text-align: center;
+  margin-top: 20vh;
 }
 
 /* Card */
@@ -141,4 +149,67 @@ img {
 .card:hover {
   cursor: pointer;
   transform: scale(1.5);
+}
+
+/* Seatings */
+
+.seats {
+  height: 100vh;
+}
+
+.screen {
+  width: 65vw;
+  height: 2.5vh;
+  margin: 2vh auto 2vh;
+  text-align: center;
+}
+
+.white-screen {
+  color: rgb(29, 28, 28);
+  background: rgb(223, 215, 215);
+}
+
+.black-screen {
+  color: rgb(223, 215, 215);
+  background: rgb(29, 28, 28);
+}
+
+.movieTitle {
+  margin: 0;
+  padding: 2vh;
+}
+
+.seat-info {
+  margin-top: 5vh;
+  height: 5vh;
+}
+
+.seats-container {
+  display: grid;
+  margin: auto;
+  grid-template: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 2fr 1fr 1fr 1fr;
+  height: 50vh;
+  width: 50vw;
+}
+
+.seat {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  border: solid 2px black;
+  border-radius: 10px 10px 0 0;
+}
+
+.free:hover {
+  background-color: rgb(240, 240, 86);
+  cursor: pointer;
+}
+
+.taken {
+  background-color: rgb(201, 76, 76);
+}
+
+.selected {
+  background-color: rgb(240, 240, 86);
 }

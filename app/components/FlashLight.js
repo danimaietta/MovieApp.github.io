@@ -1,11 +1,7 @@
 import React, { useContext } from 'react'
 import LocaleContext from '../context/LocaleContext'
 
-const activeStyle = {
-  color: '#e34646'
-}
-
-export default function Nav() {
+export default function FlashLight() {
   const { theme, setTheme } = useContext(LocaleContext)
   const classBtn = theme == 'light' ? 'light-button' : 'dark-button'
 

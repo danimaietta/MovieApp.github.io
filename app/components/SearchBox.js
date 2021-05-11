@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
+import FlashLight from '../components/FlashLight'
 import LocaleContext from '../context/LocaleContext'
-import { FaSearch } from 'react-icons/fa'
 
 export default function SearchBox({ movies, handler }) {
   const { theme } = useContext(LocaleContext)
@@ -12,10 +12,12 @@ export default function SearchBox({ movies, handler }) {
         return movie
     })
   }
+
   const handleChange = event => {
     let filteredMovies = filterMoviesByTitle(event.target.value)
     handler(filteredMovies)
   }
+
   const updateHandler = sortBy => handler(sortBy)
 
   const filterByPopularity = () => {
@@ -27,18 +29,20 @@ export default function SearchBox({ movies, handler }) {
   const filterByAdults = () => {
     updateHandler(movies.filter((movie, i) => movie.adult && movie))
   }
+
   const filterByKids = () => {
     console.log('here')
     updateHandler(movies.filter((movie, i) => !movie.adult && movie))
   }
+
   return (
-    <div className='flex center row'>
+    <div className='flex center y-center row'>
       <input
         className={`${classBtn} search-input fontawesome`}
         placeholder='&#xf002; Find a movie'
         type='text'
         onChange={handleChange}
-      ></input>
+      />
       <button
         onClick={filterByPopularity}
         className={`filter-button ${classBtn}`}
@@ -54,6 +58,7 @@ export default function SearchBox({ movies, handler }) {
       <button onClick={filterByKids} className={`filter-button ${classBtn}`}>
         Kids
       </button>
+      <FlashLight />
     </div>
   )
 }
