@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
-import FlashLight from '../components/FlashLight'
-import LocaleContext from '../context/LocaleContext'
+import FlashLight from './FlashLight'
+import LocaleContext from '../../context/LocaleContext'
 
 export default function SearchBox({ movies, handler }) {
   const { theme } = useContext(LocaleContext)
   const classBtn = theme == 'light' ? 'light-button' : 'dark-button'
 
   function filterMoviesByTitle(movieTitle) {
-    return movies.filter((movie, i) => {
+    return movies.filter(movie => {
       if (movie.title.toLowerCase().includes(movieTitle.toLowerCase()))
         return movie
     })
@@ -27,12 +27,10 @@ export default function SearchBox({ movies, handler }) {
     updateHandler(movies.sort((a, b) => b.vote_count - a.vote_count))
   }
   const filterByAdults = () => {
-    updateHandler(movies.filter((movie, i) => movie.adult && movie))
+    updateHandler(movies.filter(movie => movie.adult && movie))
   }
-
   const filterByKids = () => {
-    console.log('here')
-    updateHandler(movies.filter((movie, i) => !movie.adult && movie))
+    updateHandler(movies.filter(movie => !movie.adult && movie))
   }
 
   return (

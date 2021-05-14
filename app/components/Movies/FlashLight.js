@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import LocaleContext from '../context/LocaleContext'
+import LocaleContext from '../../context/LocaleContext'
 
 export default function FlashLight() {
   const { theme, setTheme } = useContext(LocaleContext)

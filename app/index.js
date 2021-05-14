@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import Reserve from './components/Reserve'
-import Seating from './components/Seating'
+import Reserve from './components/Movies/Reserve'
+import Seating from './components/Seating/Seating'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LocaleContext from './context/LocaleContext'
 

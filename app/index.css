@@ -179,7 +179,7 @@ img {
   padding: 2vh;
 }
 
-.seat-info {
+.seat-header {
   margin-top: 5vh;
   height: 5vh;
 }
@@ -198,7 +198,7 @@ img {
   height: 30px;
   margin-left: 5px;
   border: solid 2px black;
-  border-radius: 10px 10px 0 0;
+  border-radius: 15px 15px 0 0;
 }
 
 .free:hover {
@@ -212,4 +212,28 @@ img {
 
 .selected {
   background-color: rgb(240, 240, 86);
+}
+
+.selected:hover {
+  cursor: pointer;
+}
+
+.seat-footer-container {
+  display: grid;
+  margin: auto;
+  grid-template: 1fr 1fr / 1fr 1fr 1fr;
+  height: 20vh;
+  width: 40vw;
+}
+
+.item-footer {
+  display: grid;
+  width: 100%;
+  height: 100%;
+}
+
+.payment-button {
+  display: grid;
+  width: 200%;
+  height: 100%;
 }
