@@ -7,13 +7,12 @@ function generateSeats() {
 }
 
 const generateSeatsJSON = movies => {
-  let jsonList = movies.map(movie => {
+  return movies.map(movie => {
     return {
       movie,
       seats: generateSeats()
     }
   })
-  return jsonList
 }
 
 export default generateSeatsJSON

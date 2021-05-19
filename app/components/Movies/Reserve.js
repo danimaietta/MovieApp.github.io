@@ -15,10 +15,12 @@ export default function Reserve() {
   useEffect(() => {
     async function getMovies() {
       const movies = await getAllMovies()
-      setAllMovies(movies)
-      setFilterMovies(movies)
+      const moviesWithIds = movies.map((m, i) => {
+        return { ...m, idMovie: i + 1 }
+      })
+      setAllMovies(moviesWithIds)
+      setFilterMovies(moviesWithIds)
       //const allSeats = seatsGenerator(movies.map(m => m.title))
-      //console.log(allSeats)
     }
     getMovies()
   }, [])
@@ -40,9 +42,9 @@ export default function Reserve() {
             <Link
               key={i}
               to={{
-                pathname: `/seating/${i}${movie.title}`,
+                pathname: `/seating/${movie.idMovie}${movie.title}`,
                 state: {
-                  id: i,
+                  id: movie.idMovie,
                   movie
                 }
               }}

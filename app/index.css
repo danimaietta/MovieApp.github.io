@@ -202,7 +202,7 @@ img {
 }
 
 .free:hover {
-  background-color: rgb(240, 240, 86);
+  background-color: rgb(102, 185, 85);
   cursor: pointer;
 }
 
@@ -210,8 +210,12 @@ img {
   background-color: rgb(201, 76, 76);
 }
 
+.taken:hover {
+  cursor: not-allowed;
+}
+
 .selected {
-  background-color: rgb(240, 240, 86);
+  background-color: rgb(102, 185, 85);
 }
 
 .selected:hover {
@@ -223,7 +227,7 @@ img {
   margin: auto;
   grid-template: 1fr 1fr / 1fr 1fr 1fr;
   height: 20vh;
-  width: 40vw;
+  width: 60vw;
 }
 
 .item-footer {
@@ -234,6 +238,32 @@ img {
 
 .payment-button {
   display: grid;
-  width: 200%;
-  height: 100%;
+  align-items: center;
+  font-weight: bold;
+  width: 50%;
+  height: 50%;
+  border-radius: 20px;
+  background-color: rgb(223, 215, 215);
+  text-align: center;
+}
+
+.payment-button:hover {
+  background-color: rgb(29, 28, 28);
+  color: rgb(223, 215, 215);
+}
+
+select {
+  display: inline-block;
+  color: rgb(29, 28, 28);
+  background: rgb(223, 215, 215);
+  width: 50%;
+  border: none;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.backbutton:hover {
+  cursor: pointer;
 }
