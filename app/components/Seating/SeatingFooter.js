@@ -16,10 +16,17 @@ export default function SeatingFooter({
       <div className='item-footer'>
         <div>
           Hour: {'    '}
-          <select onChange={event => selectSeatsByHour(event.target.value)}>
-            <option value={hoursList[0]}>{hoursList[0]}</option>
-            <option value={hoursList[1]}>{hoursList[1]}</option>
-            <option value={hoursList[2]}>{hoursList[2]}</option>
+          <select
+            id='hour-select'
+            onChange={event => selectSeatsByHour(event.target.value)}
+          >
+            {hoursList.map((h, i) => {
+              return (
+                <option key={i} value={h}>
+                  {h}
+                </option>
+              )
+            })}
           </select>
         </div>
       </div>

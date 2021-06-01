@@ -11,7 +11,7 @@ export default function Seating({ match, history }) {
       jsonS => jsonS.id == match.params.id && jsonS.hour == hour
     )
   }
-  let [[{ seats }], setSeats] = useState(useMemo(() => getSeats(), [])) // referenced json obj
+  let [{ seats }] = useMemo(() => getSeats(), []) // referenced json obj
   let [allSeats, setAllSeats] = useState(() => seats.map(s => s)) // unreferenced json obj
   const [seatNumbers, setSeatNumbers] = useState([]) // 0 - 41
   const [seatNames, setSeatNames] = useState([]) // A1 - G6
@@ -53,7 +53,7 @@ export default function Seating({ match, history }) {
   }
 
   return (
-    <div className='seats'>
+    <div className='container'>
       <BackButton history={history} />
       <SeatingHeader movie={match.params.movie} theme={theme} />
       <div className='seats-container'>
