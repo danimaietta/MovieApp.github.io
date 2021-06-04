@@ -44,9 +44,9 @@ export default function Payment(props) {
         movie,
         price,
         seats,
-        day: date,
+        day: date[1],
         hour,
-        month,
+        month: months[date[0]],
         email,
         QRcode: 'QRtestString'
       },
