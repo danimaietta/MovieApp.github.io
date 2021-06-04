@@ -4,7 +4,7 @@ import Card from './Card'
 import { getAllMovies } from '../../utils/api'
 import { Link } from 'react-router-dom'
 import LocaleContext from '../../context/LocaleContext'
-import seatsGenerator from '../../utils/seatsGenerator'
+//import seatsGenerator from '../../utils/seatsGenerator'
 
 export default function Reserve() {
   const [allMovies, setAllMovies] = useState([])

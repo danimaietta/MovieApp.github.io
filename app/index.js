@@ -17,7 +17,11 @@ function App() {
           <Switch>
             <Route exact path='/' component={Reserve} />
             <Route exact path='/seating/:id:movie' component={Seating} />
-            <Route exact path='/payment' component={Payment} />
+            <Route
+              exact
+              path='/payment/:movie:price:seats:date:hour'
+              component={Payment}
+            />
             <Route
               render={() => <h1 className='flex center row'>404 Not Found</h1>}
             />

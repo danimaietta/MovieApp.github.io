@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function SeatingFooter({
+  movie,
   seatCount = 0,
   seatNames = [],
   selectSeatsByHour,
   goToPayment
 }) {
-  const date = `${new Date().getDate()}/${new Date().getMonth() + 1}`
+  const price = seatCount * 13
+  const seats = seatNames.reduce((s, a) => `${a} ${s}`, '')
+  const date = [new Date().getMonth() + 1, new Date().getDate()]
+  const [hour, setHour] = useState()
   const hoursList = ['2:00pm', '5:30pm', '9:00pm']
+  const getHour = e => {
+    selectSeatsByHour(e.target.value)
+    setHour(e.target.value)
+  }
 
   return (
     <div className='seat-footer-container'>
@@ -16,10 +24,7 @@ export default function SeatingFooter({
       <div className='item-footer'>
         <div>
           Hour: {'    '}
-          <select
-            id='hour-select'
-            onChange={event => selectSeatsByHour(event.target.value)}
-          >
+          <select id='hour-select' onChange={e => getHour(e)}>
             {hoursList.map((h, i) => {
               return (
                 <option key={i} value={h}>
@@ -30,11 +35,15 @@ export default function SeatingFooter({
           </select>
         </div>
       </div>
-      <div className='item-footer'>
-        Seats: {seatNames.reduce((s, a) => `${a} ${s}`, '')}
-      </div>
-      <div className='item-footer'>Price: ${seatCount * 13}</div>
-      <Link className='link' to='/payment'>
+      <div className='item-footer'>Seats: {seats}</div>
+      <div className='item-footer'>Price: ${price}</div>
+      <Link
+        className='link'
+        to={{
+          pathname: `/payment/${movie}${price}${seats}${date}${hour}`,
+          state: { movie, price, seats, date, hour }
+        }}
+      >
         <button className='payment-button' onClick={goToPayment}>
           Payment
         </button>

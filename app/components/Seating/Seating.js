@@ -4,6 +4,7 @@ import SeatingFooter from './SeatingFooter'
 import BackButton from '../BackButton'
 import JSONSeats from '../../utils/seating'
 import LocaleContext from '../../context/LocaleContext'
+import { letters, numbers } from '../../utils/utils'
 
 export default function Seating({ match, history }) {
   const getSeats = (hour = '2:00pm') => {
@@ -16,8 +17,6 @@ export default function Seating({ match, history }) {
   const [seatNumbers, setSeatNumbers] = useState([]) // 0 - 41
   const [seatNames, setSeatNames] = useState([]) // A1 - G6
   const { theme } = useContext(LocaleContext)
-  const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-  const numbers = [6, 5, 4, 3, 2, 1]
 
   const calculateSeatName = array => {
     return array.map(sn => {
@@ -46,6 +45,8 @@ export default function Seating({ match, history }) {
     setAllSeats(getSeats(hour)[0].seats.map(s => s))
   }
 
+  // remembers the selected seats before you go to /payment
+  // useRef
   const goToPayment = () => {
     allSeats.map((seat, i) => {
       seats[i] = seat
@@ -72,6 +73,7 @@ export default function Seating({ match, history }) {
         })}
       </div>
       <SeatingFooter
+        movie={match.params.movie}
         seatCount={seatNumbers.length}
         seatNames={seatNames}
         selectSeatsByHour={selectSeatsByHour}

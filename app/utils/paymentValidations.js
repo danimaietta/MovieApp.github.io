@@ -29,3 +29,11 @@ export const validateCVV = (cvv = '') => {
     return null
   }
 }
+
+export const validateEmail = (email = '') => {
+  if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.exec(email) === null) {
+    return '* bad email format'
+  } else {
+    return null
+  }
+}

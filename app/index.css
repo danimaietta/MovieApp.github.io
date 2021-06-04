@@ -297,6 +297,11 @@ select:hover {
   font-size: 0.9em;
 }
 
+.paymentTitle {
+  text-align: center;
+  font-style: italic;
+}
+
 /* Credit Card */
 
 .creditCard {
