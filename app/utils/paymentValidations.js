@@ -2,7 +2,7 @@ export const validateCardNumber = (cardNumber = '') => {
   const cardNumberTrim = cardNumber.replace(/\s/g, '')
   const isNumber = !isNaN(cardNumberTrim)
   if (!isNumber) {
-    return '* numbers only'
+    return '* letters only'
   } else if (cardNumber.length < 19) {
     return `* incomplete`
   } else {
@@ -12,7 +12,7 @@ export const validateCardNumber = (cardNumber = '') => {
 
 export const validateOwner = (owner = '') => {
   if (owner && /\d/.exec(owner)) {
-    return '* text only'
+    return '* letters only'
   } else if (owner.length < 14) {
     return `* incomplete`
   } else {
