@@ -14,27 +14,28 @@ import QRcode from 'qrcode.react'
 
 export default function Payment(props) {
   const { movie, price, seats, date, hour } = props.location.state
-  const [owner, setOwner] = useState()
-  const [cardNumber, setCardNumber] = useState()
-  const [cvv, setCvv] = useState()
-  const [month, setMonth] = useState('January')
-  const [year, setYear] = useState('2021')
-  const [type, setType] = useState('Visa')
+  const [cardInfo, setCardInfo] = useState({
+    owner,
+    cardNumber,
+    cvv,
+    month: 'January',
+    year: '2021',
+    type: 'Visa'
+  })
   const [email, setEmail] = useState()
-  const [cardNumberErrorMsg, setCardNumberErrorMsg] = useState(null)
-  const [ownerErrorMsg, setOwnerErrorMsg] = useState(null)
-  const [cvvErrorMsg, setCvvErrorMsg] = useState(null)
-  const [emailErrorMsg, setEmailErrorMsg] = useState(null)
-  const [successFulMsg, setSuccessFulMsg] = useState(null)
+  const [messages, setMessages] = useState({
+    cardNumberError,
+    ownerError,
+    cvvError,
+    emailError,
+    success
+  })
 
-  const addSpacesToCardNumber = e => {
-    const cardNumber = e.target.value
-    const fixedNumber = cardNumber
+  const addSpacesToCardNumber = value => {
+    return value
       .replace(/\W/gi, '')
       .replace(/(.{4})/g, '$1 ')
       .substring(0, 19)
-    setCardNumber(fixedNumber)
-    e.target.value = fixedNumber
   }
 
   init('user_xGmxuVGkTxsGlfO5Nke6f')
@@ -55,24 +56,37 @@ export default function Payment(props) {
       'user_xGmxuVGkTxsGlfO5Nke6f'
     ).then(
       () => {
-        setSuccessFulMsg('The email was sended successfuly Enjoy your movie!')
+        setMessages({
+          ...messages,
+          success: 'The email was sended successfuly Enjoy your movie!'
+        })
       },
       () => {
-        setSuccessFulMsg('Ups! Something went wrong, please try again')
+        setMessages({
+          ...messages,
+          success: 'Ups! Something went wrong, please try again'
+        })
       }
     )
   }
 
   const validations = () => {
-    setCardNumberErrorMsg(validateCardNumber(cardNumber))
-    setOwnerErrorMsg(validateOwner(owner))
-    setCvvErrorMsg(validateCVV(cvv))
-    setEmailErrorMsg(validateEmail(email))
+    const { cardNumber, owner, cvv } = cardInfo
+    setMessages({
+      ...messages,
+      ownerError: validateOwner(owner),
+      cardNumberError: validateCardNumber(cardNumber),
+      cvvError: validateCVV(cvv),
+      emailError: validateEmail(email)
+    })
     if (cardNumber && owner && email && cvv) {
-      setSuccessFulMsg('Loading...')
+      setMessages({ ...messages, success: 'Loading...' })
       sendEmail()
     }
   }
+
+  const { cardNumber, owner, cvv, month, year, type } = cardInfo
+  const { cardNumberError, ownerError, cvvError, emailError, success } = messages
 
   return (
     <div className='container'>
@@ -97,19 +111,21 @@ export default function Payment(props) {
             <input
               placeholder='Insert Name'
               maxLength='17'
-              onChange={e => setOwner(e.target.value)}
+              onChange={e => setCardInfo({ ...cardInfo, owner: e.target.value })}
             ></input>
-            {ownerErrorMsg && <p className='error'>{ownerErrorMsg}</p>}
+            {ownerError && <p className='error'>{ownerError}</p>}
           </div>
           <div className='col'>
             <p>Card Number</p>
             <input
               placeholder='0000 0000 0000 0000'
-              onChange={e => addSpacesToCardNumber(e)}
+              onChange={e => {
+                let cardNumber = addSpacesToCardNumber(e.target.value)
+                setCardInfo({ ...cardInfo, cardNumber })
+                e.target.value = cardNumber
+              }}
             ></input>
-            {cardNumberErrorMsg && (
-              <p className='error'>{cardNumberErrorMsg}</p>
-            )}
+            {cardNumberError && <p className='error'>{cardNumberError}</p>}
           </div>
         </div>
         <div className='flex center space-between'>
@@ -118,14 +134,14 @@ export default function Payment(props) {
             <input
               maxLength='3'
               placeholder='000'
-              onChange={e => setCvv(e.target.value)}
+              onChange={e => setCardInfo({ ...cardInfo, cvv: e.target.value })}
             ></input>
-            {cvvErrorMsg && <p className='error'>{cvvErrorMsg}</p>}
+            {cvvError && <p className='error'>{cvvError}</p>}
           </div>
           <div className='col'>
             <p>Expiration Date</p>
             <div className='row'>
-              <select onChange={e => setMonth(e.target.value)}>
+              <select onChange={e => setCardInfo({ ...cardInfo, month: e.target.value })}>
                 {months.map((m, i) => {
                   return (
                     <option key={i} value={m}>
@@ -134,7 +150,10 @@ export default function Payment(props) {
                   )
                 })}
               </select>
-              <select id='slcYear' onChange={e => setYear(e.target.value)}>
+              <select
+                id='slcYear'
+                onChange={e => setCardInfo({ ...cardInfo, year: e.target.value })}
+              >
                 {years.map((y, i) => {
                   return (
                     <option key={i} value={y}>
@@ -150,39 +169,36 @@ export default function Payment(props) {
           <div className='col'>
             <FaCcVisa
               className='faCCard'
-              onClick={() => setType('Visa')}
+              onClick={() => setCardInfo({ ...cardInfo, type: 'Visa' })}
               size='3em'
             />
           </div>
           <div className='col'>
             <FaCcPaypal
               className='faCCard'
-              onClick={() => setType('Paypal')}
+              onClick={() => setCardInfo({ ...cardInfo, type: 'Paypal' })}
               size='3em'
             />
           </div>
           <div className='col'>
             <FaCcMastercard
               className='faCCard'
-              onClick={() => setType('MasterCard')}
+              onClick={() => setCardInfo({ ...cardInfo, type: 'MasterCard' })}
               size='3em'
             />
           </div>
         </div>
         <div className='flex center email space-between'>
           <p>Email:</p>
-          <input
-            maxLength='30'
-            onChange={e => setEmail(e.target.value)}
-          ></input>
-          {emailErrorMsg && <p className='error'>{emailErrorMsg}</p>}
+          <input maxLength='30' onChange={e => setEmail(e.target.value)}></input>
+          {emailError && <p className='error'>{emailError}</p>}
         </div>
         <div className='flex center space-between'>
           <button className='payment-button confirm-btn' onClick={validations}>
             Confirm
           </button>
           <br />
-          <p>{successFulMsg}</p>
+          <p>{success}</p>
         </div>
       </div>
     </div>
