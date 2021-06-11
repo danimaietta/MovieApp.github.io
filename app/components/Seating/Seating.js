@@ -8,15 +8,14 @@ import { letters, numbers } from '../../utils/utils'
 
 export default function Seating({ match, history }) {
   const getSeats = (hour = '2:00pm') => {
-    return JSONSeats.filter(
-      jsonS => jsonS.id == match.params.id && jsonS.hour == hour
-    )
+    return JSONSeats.filter(jsonS => jsonS.id == match.params.id && jsonS.hour == hour)
   }
   let [{ seats }] = useMemo(() => getSeats(), []) // referenced json obj
   let [allSeats, setAllSeats] = useState(() => seats.map(s => s)) // unreferenced json obj
   const [seatNumbers, setSeatNumbers] = useState([]) // 0 - 41
   const [seatNames, setSeatNames] = useState([]) // A1 - G6
   const { theme } = useContext(LocaleContext)
+  const [validateMsg, setValidateMsg] = useState('')
 
   const calculateSeatName = array => {
     return array.map(sn => {
@@ -47,10 +46,16 @@ export default function Seating({ match, history }) {
 
   // remembers the selected seats before you go to /payment
   // useRef
-  const goToPayment = () => {
-    allSeats.map((seat, i) => {
-      seats[i] = seat
-    })
+  const goToPayment = e => {
+    if (seatNumbers.length > 0 && seatNames.length > 0) {
+      allSeats.map((seat, i) => {
+        seats[i] = seat
+      })
+    } else {
+      console.log('here we stop the redirect')
+      setValidateMsg('At least one seat must be selected')
+      e.preventDefault()
+    }
   }
 
   return (
@@ -78,6 +83,7 @@ export default function Seating({ match, history }) {
         seatNames={seatNames}
         selectSeatsByHour={selectSeatsByHour}
         goToPayment={goToPayment}
+        validateMsg={validateMsg}
       />
     </div>
   )

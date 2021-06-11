@@ -6,7 +6,8 @@ export default function SeatingFooter({
   seatCount = 0,
   seatNames = [],
   selectSeatsByHour,
-  goToPayment
+  goToPayment,
+  validateMsg
 }) {
   const price = seatCount * 13
   const seats = seatNames.reduce((s, a) => `${a} ${s}`, '')
@@ -44,10 +45,11 @@ export default function SeatingFooter({
           state: { movie, price, seats, date, hour }
         }}
       >
-        <button className='payment-button' onClick={goToPayment}>
+        <button className='payment-button' onClick={e => goToPayment(e)}>
           Payment
         </button>
       </Link>
+      <div className='item-footer'>{validateMsg}</div>
     </div>
   )
 }
