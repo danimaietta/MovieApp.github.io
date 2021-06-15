@@ -9,7 +9,7 @@ import {
   validateEmail
 } from '../../utils/paymentValidations'
 import { months, years } from '../../utils/utils'
-import { send, init } from 'emailjs-com'
+import sendEmail from '../../utils/email'
 import QRcode from 'qrcode.react'
 
 export default function Payment(props) {
@@ -38,38 +38,6 @@ export default function Payment(props) {
       .substring(0, 19)
   }
 
-  init('user_xGmxuVGkTxsGlfO5Nke6f')
-  const sendEmail = () => {
-    send(
-      'service_h10tdd8',
-      'template_wjrhujl',
-      {
-        movie,
-        price,
-        seats,
-        day: date[1],
-        hour,
-        month: months[date[0]],
-        email,
-        code: `${seats} - ${Math.random() * 10}`
-      },
-      'user_xGmxuVGkTxsGlfO5Nke6f'
-    ).then(
-      () => {
-        setMessages({
-          ...messages,
-          success: 'The email was sended successfuly Enjoy your movie!'
-        })
-      },
-      () => {
-        setMessages({
-          ...messages,
-          success: 'Ups! Something went wrong, please try again'
-        })
-      }
-    )
-  }
-
   const validations = () => {
     const { cardNumber, owner, cvv } = cardInfo
     setMessages({
@@ -81,7 +49,21 @@ export default function Payment(props) {
     })
     if (cardNumber && owner && email && cvv) {
       setMessages({ ...messages, success: 'Loading...' })
-      sendEmail()
+      sendEmail({ ...props.location.state, email }).then(
+        () => {
+          setMessages({
+            ...messages,
+            success: `The email was sended successfuly. 
+                      Enjoy the movie!`
+          })
+        },
+        () => {
+          setMessages({
+            ...messages,
+            success: 'Ups! Something went wrong, please try again'
+          })
+        }
+      )
     }
   }
 
