@@ -1,8 +1,5 @@
 import React from 'react'
 
-const LocaleContext = React.createContext({
-  theme: 'light',
-  setTheme: () => (theme === 'light' ? 'dark' : 'light')
-})
+const LocaleContext = React.createContext(undefined)
 
 export default LocaleContext

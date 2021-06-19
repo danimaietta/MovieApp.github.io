@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function SeatingFooter({
+  idMovie,
   movie,
   seatCount = 0,
   seatNames = [],
@@ -12,7 +13,7 @@ export default function SeatingFooter({
   const price = seatCount * 13
   const seats = seatNames.reduce((s, a) => `${a} ${s}`, '')
   const date = [new Date().getMonth() + 1, new Date().getDate()]
-  const [hour, setHour] = useState()
+  const [hour, setHour] = useState('2:00pm')
   const hoursList = ['2:00pm', '5:30pm', '9:00pm']
   const getHour = e => {
     selectSeatsByHour(e.target.value)
@@ -41,8 +42,8 @@ export default function SeatingFooter({
       <Link
         className='link'
         to={{
-          pathname: `/payment/${movie}${price}${seats}${date}${hour}`,
-          state: { movie, price, seats, date, hour }
+          pathname: `/payment/${idMovie}${movie}${price}${seats}${date}${hour}`,
+          state: { idMovie, movie, price, seatNames: seats, date, hour }
         }}
       >
         <button className='payment-button' onClick={e => goToPayment(e)}>

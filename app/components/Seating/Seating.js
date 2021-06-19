@@ -2,20 +2,15 @@ import React, { useState, useEffect, useContext, useMemo } from 'react'
 import SeatingHeader from './SeatingHeader'
 import SeatingFooter from './SeatingFooter'
 import BackButton from '../BackButton'
-import JSONSeats from '../../utils/seating'
 import LocaleContext from '../../context/LocaleContext'
 import { letters, numbers } from '../../utils/utils'
 
 export default function Seating({ match, history }) {
-  const getSeats = (hour = '2:00pm') => {
-    return JSONSeats.filter(jsonS => jsonS.id == match.params.id && jsonS.hour == hour)
-  }
-  let [{ seats }] = useMemo(() => getSeats(), []) // referenced json [true, false, true]
+  const { theme, getSeats } = useContext(LocaleContext)
+  let [{ seats }] = useMemo(() => getSeats('2:00pm', match.params.id), []) // referenced json [true, false, true]
   let [allSeats, setAllSeats] = useState(() => seats.map(s => s)) // unreferenced json obj [true, false, true]
-  const localSeats = JSON.parse(localStorage.getItem('seatNumbers'))
-  const [seatNumbers, setSeatNumbers] = useState(localSeats) // 0 - 41
+  const [seatNumbers, setSeatNumbers] = useState([]) // 0 - 41
   const [seatNames, setSeatNames] = useState([]) // A1 - G6
-  const { theme } = useContext(LocaleContext)
   const [validateMsg, setValidateMsg] = useState('')
 
   const calculateSeatName = array => {
@@ -49,7 +44,7 @@ export default function Seating({ match, history }) {
   const selectSeatsByHour = hour => {
     setSeatNumbers([])
     setSeatNames([])
-    setAllSeats(getSeats(hour)[0].seats.map(s => s))
+    setAllSeats(getSeats(hour, match.params.id)[0].seats.map(s => s))
   }
 
   // remembers the selected seats before you go to /payment
@@ -64,10 +59,6 @@ export default function Seating({ match, history }) {
       e.preventDefault()
     }
   }
-
-  useEffect(() => {
-    localStorage.setItem('seatNumbers', JSON.stringify(seatNumbers))
-  })
 
   const toggleSeatClass = (seat, i) => {
     if (seatNumbers.includes(i)) {
@@ -99,6 +90,7 @@ export default function Seating({ match, history }) {
         })}
       </div>
       <SeatingFooter
+        idMovie={match.params.id}
         movie={match.params.movie}
         seatCount={seatNumbers.length}
         seatNames={seatNames}

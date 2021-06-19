@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import BackButton from '../BackButton'
 import CreditCard from './CreditCard'
 import { FaCcVisa, FaCcPaypal, FaCcMastercard } from 'react-icons/fa'
@@ -10,10 +10,15 @@ import {
 } from '../../utils/paymentValidations'
 import { months, years } from '../../utils/utils'
 import sendEmail from '../../utils/email'
+import LocaleContext from '../../context/LocaleContext'
 import QRcode from 'qrcode.react'
 
+// Should i use useReducer
+
 export default function Payment(props) {
-  const { movie, price, seats, date, hour } = props.location.state
+  const { getSeats } = useContext(LocaleContext)
+  const { idMovie, movie, price, seatNames, date, hour } = props.location.state
+  let [{ seats }] = getSeats(hour, idMovie)
   const [cardInfo, setCardInfo] = useState({
     owner,
     cardNumber,
@@ -56,6 +61,7 @@ export default function Payment(props) {
             success: `The email was sended successfuly. 
                       Enjoy the movie!`
           })
+          saveReservation()
         },
         () => {
           setMessages({
@@ -64,6 +70,30 @@ export default function Payment(props) {
           })
         }
       )
+    }
+  }
+
+  const saveReservation = () => {
+    for (let i = 0; i < seatNames.length; i = i + 3) {
+      const seat = seatNames.substring(i, i + 3)
+      const letter = seat.substring(0, 1)
+      const number = parseInt(seat.substring(1, 2))
+      const res =
+        letter == 'A'
+          ? 0
+          : letter == 'B'
+          ? 6
+          : letter == 'C'
+          ? 12
+          : letter == 'D'
+          ? 18
+          : letter == 'E'
+          ? 24
+          : letter == 'F'
+          ? 30
+          : 36
+      console.log('index', res + number - 1)
+      seats[res + number - 1] = true
     }
   }
 
@@ -76,7 +106,7 @@ export default function Payment(props) {
       <h4 className='paymentTitle'>
         {`You are goig to watch ${movie} the ${date[1]} of ${months[date[0]]}`}
         <br />
-        {`at ${hour} in the seat(s) ${seats} for $${price}`}
+        {`at ${hour} in the seat(s) ${seatNames} for $${price}`}
       </h4>
       <CreditCard
         cardNumber={cardNumber}
