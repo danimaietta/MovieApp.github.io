@@ -9,6 +9,7 @@ import LocaleContext from './context/LocaleContext'
 import JSONSeats from './utils/seating.json'
 
 function App() {
+  localStorage.setItem('hour', '2:00pm')
   const [theme, setTheme] = useState('light')
 
   const getSeats = (hour = '2:00pm', idMovie) => {

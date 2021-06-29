@@ -13,8 +13,6 @@ import sendEmail from '../../utils/email'
 import LocaleContext from '../../context/LocaleContext'
 import QRcode from 'qrcode.react'
 
-// Should i use useReducer
-
 export default function Payment(props) {
   const { getSeats } = useContext(LocaleContext)
   const { idMovie, movie, price, seatNames, date, hour } = props.location.state
@@ -100,6 +98,10 @@ export default function Payment(props) {
   const { cardNumber, owner, cvv, month, year, type } = cardInfo
   const { cardNumberError, ownerError, cvvError, emailError, success } = messages
 
+  const handleChange = attribute => e => {
+    setCardInfo({ ...cardInfo, [attribute]: e.target.value })
+  }
+
   return (
     <div className='container'>
       <BackButton history={props.history} />
@@ -136,18 +138,14 @@ export default function Payment(props) {
                 setCardInfo({ ...cardInfo, cardNumber })
                 e.target.value = cardNumber
               }}
-            ></input>
+            />
             {cardNumberError && <p className='error'>{cardNumberError}</p>}
           </div>
         </div>
         <div className='flex center space-between'>
           <div className='col'>
             <p>CVV</p>
-            <input
-              maxLength='3'
-              placeholder='000'
-              onChange={e => setCardInfo({ ...cardInfo, cvv: e.target.value })}
-            ></input>
+            <input maxLength='3' placeholder='000' onChange={handleChange('cvv')}></input>
             {cvvError && <p className='error'>{cvvError}</p>}
           </div>
           <div className='col'>

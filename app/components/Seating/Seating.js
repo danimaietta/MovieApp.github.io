@@ -7,7 +7,9 @@ import { letters, numbers } from '../../utils/utils'
 
 export default function Seating({ match, history }) {
   const { theme, getSeats } = useContext(LocaleContext)
-  let [{ seats }] = useMemo(() => getSeats('2:00pm', match.params.id), []) // referenced json [true, false, true]
+  const hour = localStorage.getItem('hour')
+  console.log(hour)
+  let [{ seats }] = useMemo(() => getSeats(hour, match.params.id), []) // referenced json [true, false, true]
   let [allSeats, setAllSeats] = useState(() => seats.map(s => s)) // unreferenced json obj [true, false, true]
   const [seatNumbers, setSeatNumbers] = useState([]) // 0 - 41
   const [seatNames, setSeatNames] = useState([]) // A1 - G6
@@ -42,8 +44,8 @@ export default function Seating({ match, history }) {
 
   // hour in <select />
   const selectSeatsByHour = hour => {
-    setSeatNumbers([])
-    setSeatNames([])
+    /*setSeatNumbers([])
+    setSeatNames([])*/
     setAllSeats(getSeats(hour, match.params.id)[0].seats.map(s => s))
   }
 

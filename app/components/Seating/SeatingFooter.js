@@ -13,10 +13,11 @@ export default function SeatingFooter({
   const price = seatCount * 13
   const seats = seatNames.reduce((s, a) => `${a} ${s}`, '')
   const date = [new Date().getMonth() + 1, new Date().getDate()]
-  const [hour, setHour] = useState('2:00pm')
+  const [hour, setHour] = useState(localStorage.getItem('hour'))
   const hoursList = ['2:00pm', '5:30pm', '9:00pm']
   const getHour = e => {
     selectSeatsByHour(e.target.value)
+    localStorage.setItem('hour', e.target.value)
     setHour(e.target.value)
   }
 
@@ -26,7 +27,7 @@ export default function SeatingFooter({
       <div className='item-footer'>
         <div>
           Hour: {'    '}
-          <select id='hour-select' onChange={e => getHour(e)}>
+          <select id='hour-select' onChange={e => getHour(e)} value={hour}>
             {hoursList.map((h, i) => {
               return (
                 <option key={i} value={h}>
