@@ -12,12 +12,12 @@ function App() {
   localStorage.setItem('hour', '2:00pm')
   const [theme, setTheme] = useState('light')
 
-  const getSeats = (hour = '2:00pm', idMovie) => {
-    return JSONSeats.filter(jsonS => jsonS.id == idMovie && jsonS.hour == hour)
+  const getJSONSeats = (hour = '2:00pm', idMovie) => {
+    return JSONSeats.filter(jsonS => jsonS.id == idMovie && jsonS.hour == hour)[0].seats
   }
 
   return (
-    <LocaleContext.Provider value={{ theme, setTheme, getSeats }}>
+    <LocaleContext.Provider value={{ theme, setTheme, getJSONSeats }}>
       <div className={theme}>
         <Router>
           <Switch>

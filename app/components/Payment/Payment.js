@@ -14,9 +14,9 @@ import LocaleContext from '../../context/LocaleContext'
 import QRcode from 'qrcode.react'
 
 export default function Payment(props) {
-  const { getSeats } = useContext(LocaleContext)
+  const { getJSONSeats } = useContext(LocaleContext)
   const { idMovie, movie, price, seatNames, date, hour } = props.location.state
-  let [{ seats }] = getSeats(hour, idMovie)
+  let [{ seats }] = getJSONSeats(hour, idMovie)
   const [cardInfo, setCardInfo] = useState({
     owner,
     cardNumber,
@@ -91,7 +91,7 @@ export default function Payment(props) {
           ? 30
           : 36
       console.log('index', res + number - 1)
-      seats[res + number - 1] = true
+      seats[res + number - 1] = 1
     }
   }
 
