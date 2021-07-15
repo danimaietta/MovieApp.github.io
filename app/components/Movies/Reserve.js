@@ -18,6 +18,7 @@ export default function Reserve() {
       const moviesWithIds = movies.map((m, i) => {
         return { ...m, idMovie: i + 1 }
       })
+      console.log('moviesWithIds', moviesWithIds)
       setAllMovies(moviesWithIds)
       setFilterMovies(moviesWithIds)
       //const allSeats = seatsGenerator(movies.map(m => m.title))
@@ -25,9 +26,9 @@ export default function Reserve() {
     getMovies()
   }, [])
 
-  console.log(allMovies)
-
   const handleChange = movies => setFilterMovies(movies)
+
+  console.log('filterMovies', filterMovies)
 
   return (
     <div>
@@ -42,6 +43,7 @@ export default function Reserve() {
               key={i}
               to={{
                 pathname: `/seating/${movie.idMovie}${movie.title}`,
+                search: `?id=${movie.idMovie}&movie=${movie.title}`,
                 state: {
                   id: movie.idMovie,
                   movie

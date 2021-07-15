@@ -6,9 +6,11 @@ import LocaleContext from '../../context/LocaleContext'
 import { letters, numbers } from '../../utils/utils'
 
 export default function Seating({ match, history }) {
+  const queryString = require('query-string')
   const { theme, getJSONSeats } = useContext(LocaleContext)
+  const { id, movie } = queryString.parse(location.search)
   const hour = localStorage.getItem('hour')
-  const [seats, setSeats] = useState(() => getJSONSeats(hour, match.params.id)) // JSON file data
+  const [seats, setSeats] = useState(() => getJSONSeats(hour, id)) // JSON file data
   const [seatNumbers, setSeatNumbers] = useState([]) // 0 - 41
   const [seatNames, setSeatNames] = useState([]) // A1 - G6
   const [indexOfSelectedSeats, setIndexOfSelectedSeats] = useState([]) // 1st seat = 0  last seat = 41
@@ -50,13 +52,11 @@ export default function Seating({ match, history }) {
   }
 
   // hour in <select />
-  const selectSeatsByHour = async hour => {
+  const selectSeatsByHour = hour => {
     clearSelectedSeats()
     setSeatNumbers([])
     setSeatNames([])
-    const newSeats = await getJSONSeats(hour, match.params.id).map(s => s)
-    console.log('newSeats', ...newSeats)
-    setSeats(newSeats)
+    setSeats(getJSONSeats(hour, id).map(s => s))
   }
 
   const goToPayment = e => {
@@ -79,7 +79,7 @@ export default function Seating({ match, history }) {
   return (
     <div className='container'>
       <BackButton history={history} />
-      <SeatingHeader movie={match.params.movie} theme={theme} />
+      <SeatingHeader movie={movie} theme={theme} />
       <div className='seats-container'>
         {seats.map((seat, i) => {
           return (
@@ -94,8 +94,8 @@ export default function Seating({ match, history }) {
         })}
       </div>
       <SeatingFooter
-        idMovie={parseInt(match.params.id)}
-        movie={match.params.movie}
+        idMovie={parseInt(id)}
+        movie={movie}
         seatCount={seatNumbers.length}
         seatNames={seatNames}
         selectSeatsByHour={selectSeatsByHour}
