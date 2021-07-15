@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import PropTypes from 'prop-types'
 export default function SeatingFooter({
   idMovie,
   movie,
@@ -21,9 +21,15 @@ export default function SeatingFooter({
     setHour(e.target.value)
   }
 
+  const getDateFormat = () => {
+    const month = date[0] < 10 ? `0${date[0]}` : date[0]
+    const year = date[1] < 10 ? `0${date[1]}` : date[1]
+    return `${month} / ${year}`
+  }
+
   return (
     <div className='seat-footer-container'>
-      <div className='item-footer'>Date: {date}</div>
+      <div className='item-footer'>Date: {getDateFormat()}</div>
       <div className='item-footer'>
         <div>
           Hour: {'    '}
@@ -54,4 +60,14 @@ export default function SeatingFooter({
       <div className='item-footer'>{validateMsg}</div>
     </div>
   )
+}
+
+SeatingFooter.propTypes = {
+  idMovie: PropTypes.number.isRequired,
+  movie: PropTypes.string.isRequired,
+  seatCount: PropTypes.number.isRequired,
+  seatNames: PropTypes.arrayOf(PropTypes.string),
+  selectSeatsByHour: PropTypes.func.isRequired,
+  goToPayment: PropTypes.func.isRequired,
+  validateMsg: PropTypes.string.isRequired
 }

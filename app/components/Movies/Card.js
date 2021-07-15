@@ -11,3 +11,7 @@ export default function Card({ poster }) {
     </div>
   )
 }
+
+Card.propType = {
+  poster: Proptypes.string
+}

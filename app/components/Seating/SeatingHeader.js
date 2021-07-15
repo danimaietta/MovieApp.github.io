@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-function Seating({ movie, theme }) {
+function SeatingHeader({ movie, theme }) {
   const classBtn = theme == 'light' ? 'light-button' : 'dark-button'
   const screenColor = theme == 'light' ? 'black-screen' : 'white-screen'
 
@@ -17,4 +18,9 @@ function Seating({ movie, theme }) {
   )
 }
 
-export default React.memo(Seating)
+SeatingHeader.propTypes = {
+  theme: PropTypes.string.isRequired,
+  movie: PropTypes.string.isRequired
+}
+
+export default React.memo(SeatingHeader)

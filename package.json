@@ -30,6 +30,7 @@
     "babel-polyfill": "^6.26.0",
     "emailjs-com": "^2.6.4",
     "fs-es6": "0.0.2",
+    "prop-types": "^15.7.2",
     "qrcode.react": "^1.0.1",
     "query-string": "^6.11.1",
     "react": "^16.13.0",

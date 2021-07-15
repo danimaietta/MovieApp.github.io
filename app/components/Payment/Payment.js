@@ -13,10 +13,11 @@ import sendEmail from '../../utils/email'
 import LocaleContext from '../../context/LocaleContext'
 import QRcode from 'qrcode.react'
 
+// PropTypes in this case?
 export default function Payment(props) {
   const { getJSONSeats } = useContext(LocaleContext)
   const { idMovie, movie, price, seatNames, date, hour } = props.location.state
-  let [{ seats }] = getJSONSeats(hour, idMovie)
+  const [seats, setSeats] = useState(() => getJSONSeats(hour, idMovie))
   const [cardInfo, setCardInfo] = useState({
     owner,
     cardNumber,
@@ -90,7 +91,6 @@ export default function Payment(props) {
           : letter == 'F'
           ? 30
           : 36
-      console.log('index', res + number - 1)
       seats[res + number - 1] = 1
     }
   }
@@ -125,7 +125,7 @@ export default function Payment(props) {
             <input
               placeholder='Insert Name'
               maxLength='17'
-              onChange={e => setCardInfo({ ...cardInfo, owner: e.target.value })}
+              onChange={handleChange('owner')}
             ></input>
             {ownerError && <p className='error'>{ownerError}</p>}
           </div>
@@ -151,7 +151,7 @@ export default function Payment(props) {
           <div className='col'>
             <p>Expiration Date</p>
             <div className='row'>
-              <select onChange={e => setCardInfo({ ...cardInfo, month: e.target.value })}>
+              <select onChange={handleChange('month')}>
                 {months.map((m, i) => {
                   return (
                     <option key={i} value={m}>
@@ -160,10 +160,7 @@ export default function Payment(props) {
                   )
                 })}
               </select>
-              <select
-                id='slcYear'
-                onChange={e => setCardInfo({ ...cardInfo, year: e.target.value })}
-              >
+              <select id='slcYear' onChange={handleChange('year')}>
                 {years.map((y, i) => {
                   return (
                     <option key={i} value={y}>

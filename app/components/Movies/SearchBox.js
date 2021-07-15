@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import FlashLight from './FlashLight'
 import LocaleContext from '../../context/LocaleContext'
+import PropTypes from 'prop-types'
 
 export default function SearchBox({ movies, handler }) {
   const { theme } = useContext(LocaleContext)
@@ -8,8 +9,7 @@ export default function SearchBox({ movies, handler }) {
 
   function filterMoviesByTitle(movieTitle) {
     return movies.filter(movie => {
-      if (movie.title.toLowerCase().includes(movieTitle.toLowerCase()))
-        return movie
+      if (movie.title.toLowerCase().includes(movieTitle.toLowerCase())) return movie
     })
   }
 
@@ -41,10 +41,7 @@ export default function SearchBox({ movies, handler }) {
         type='text'
         onChange={handleChange}
       />
-      <button
-        onClick={filterByPopularity}
-        className={`filter-button ${classBtn}`}
-      >
+      <button onClick={filterByPopularity} className={`filter-button ${classBtn}`}>
         Most Popular
       </button>
       <button onClick={filterByVoted} className={`filter-button ${classBtn}`}>
@@ -59,4 +56,27 @@ export default function SearchBox({ movies, handler }) {
       <FlashLight />
     </div>
   )
+}
+
+SearchBox.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      adult: PropTypes.bool,
+      backdrop_path: PropTypes.string,
+      genre_ids: PropTypes.arrayOf(PropTypes.number),
+      id: PropTypes.number,
+      idMovie: PropTypes.number,
+      original_language: PropTypes.string,
+      original_title: PropTypes.string,
+      overview: PropTypes.string,
+      popularity: PropTypes.number,
+      poster_path: PropTypes.string,
+      release_date: PropTypes.string,
+      title: PropTypes.string,
+      video: PropTypes.bool,
+      vote_average: PropTypes.number,
+      vote_count: PropTypes.number
+    })
+  ).isRequired,
+  handler: PropTypes.func.isRequired
 }

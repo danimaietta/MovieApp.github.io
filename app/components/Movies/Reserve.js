@@ -25,14 +25,13 @@ export default function Reserve() {
     getMovies()
   }, [])
 
+  console.log(allMovies)
+
   const handleChange = movies => setFilterMovies(movies)
 
   return (
     <div>
-      <SearchBox
-        movies={allMovies}
-        handler={allMovies => handleChange(allMovies)}
-      />
+      <SearchBox movies={allMovies} handler={allMovies => handleChange(allMovies)} />
       {filterMovies.length === 0 && (
         <h2 className={`${classBtn} not-found-message`}>Not movies found</h2>
       )}
