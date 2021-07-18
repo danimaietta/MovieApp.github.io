@@ -4,6 +4,7 @@ import './index.css'
 import Reserve from './components/Movies/Reserve'
 import Seating from './components/Seating/Seating'
 import Payment from './components/Payment/Payment'
+import Footer from './components/Footer/Footer'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LocaleContext from './context/LocaleContext'
 import JSONSeats from './utils/seating.json'
@@ -31,6 +32,7 @@ function App() {
             <Route render={() => <h1 className='flex center row'>404 Not Found</h1>} />
           </Switch>
         </Router>
+        <Footer />
       </div>
     </LocaleContext.Provider>
   )

@@ -10,7 +10,8 @@ export default function Seating({ match, history }) {
   const { theme, getJSONSeats } = useContext(LocaleContext)
   const { id, movie } = queryString.parse(location.search)
   const hour = localStorage.getItem('hour')
-  const [seats, setSeats] = useState(() => getJSONSeats(hour, id)) // JSON file data
+  const jsonSeats = getJSONSeats(hour, id)
+  const [seats, setSeats] = useState(jsonSeats) // JSON file data
   const [seatNumbers, setSeatNumbers] = useState([]) // 0 - 41
   const [seatNames, setSeatNames] = useState([]) // A1 - G6
   const [indexOfSelectedSeats, setIndexOfSelectedSeats] = useState([]) // 1st seat = 0  last seat = 41

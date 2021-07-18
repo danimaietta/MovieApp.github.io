@@ -438,3 +438,7 @@ button:hover {
   top: 15%;
   left: 2%;
 }
+
+a:hover {
+  cursor: pointer;
+}
