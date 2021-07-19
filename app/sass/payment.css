@@ -1,0 +1,68 @@
+.cardForm {
+  margin: auto;
+  width: 50vw;
+  height: 50vh;
+}
+
+.cardForm input,
+select,
+button {
+  border-radius: 6px;
+  height: 30px;
+}
+
+.row {
+  display: block;
+}
+
+.col {
+  display: inline-block;
+  margin-left: 8%;
+}
+
+#slcYear {
+  margin-left: 10px;
+}
+
+.faCCard {
+  margin: 25% 0 25% 0;
+}
+
+.faCCard:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+select,
+button:hover {
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+.error,
+.success {
+  font-weight: bold;
+  font-size: 0.7em;
+}
+
+.paymentTitle {
+  text-align: center;
+  font-style: italic;
+}
+
+.email input {
+  width: 40%;
+  margin: 0 0 2% 2%;
+}
+
+.confirm-btn {
+  height: 50px;
+}
+/*# sourceMappingURL=payment.css.map */

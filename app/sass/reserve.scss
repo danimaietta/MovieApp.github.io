@@ -1,0 +1,32 @@
+/* reserve grid */
+
+.reserve-container {
+  display: grid;
+  -ms-grid-columns: repeat(5, minmax(200px, 350px));
+  grid-template-columns: repeat(5, minmax(200px, 350px));
+  grid-row-gap: 10px;
+  justify-content: center;
+  height: 80vh;
+  text-align: center;
+  font-family: 'arial';
+}
+
+.not-found-message {
+  text-align: center;
+  margin-top: 20vh;
+}
+
+/* Card */
+
+.card,
+img {
+  border-radius: 25px;
+  width: 95%;
+  height: 450px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+}

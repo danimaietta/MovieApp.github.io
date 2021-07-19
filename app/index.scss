@@ -1,0 +1,95 @@
+$light: rgb(223, 215, 215);
+$dark: rgb(29, 28, 28);
+
+@import './sass/flex.scss';
+@import './sass/searchBar.scss';
+@import './sass/reserve.scss';
+@import './sass/creditCard.scss';
+@import './sass/seating.scss';
+@import './sass/payment.scss';
+
+/* 
+  Gereral
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.light {
+  background-color: $light;
+  color: $dark;
+}
+
+.dark {
+  background-color: $dark;
+  color: $light;
+}
+
+.fontawesome {
+  font-family: fontawesome;
+}
+
+.container {
+  height: 100vh;
+  font-size: 1em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.nav-link {
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.filter-button {
+  border-radius: 20px;
+  margin-left: 30px;
+  border: none;
+}
+
+.switchBtn {
+  font-size: 25px;
+  margin: 5% 5%;
+  border-radius: 35px;
+  height: 50px;
+  width: 50px;
+  border: none;
+}
+
+.light-button {
+  background-color: $light;
+}
+
+.dark-button {
+  background-color: $dark;
+  color: $light;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* BackButton */
+
+.backbutton:hover {
+  cursor: pointer;
+}
+
+/* Footer */
+
+a:hover {
+  cursor: pointer;
+}

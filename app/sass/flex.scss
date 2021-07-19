@@ -1,0 +1,30 @@
+.row {
+  flex-direction: row;
+}
+
+.flex {
+  display: flex;
+  flex: 1;
+}
+
+.center {
+  justify-content: center;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.y-center {
+  align-items: center;
+}
+
+.space-between {
+  margin: 5% 5%;
+}
+
+.end {
+  justify-content: flex-end;
+}

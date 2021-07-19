@@ -1,0 +1,38 @@
+/* reserve grid */
+.reserve-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: repeat(5, minmax(200px, 350px));
+  grid-template-columns: repeat(5, minmax(200px, 350px));
+  grid-row-gap: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 80vh;
+  text-align: center;
+  font-family: 'arial';
+}
+
+.not-found-message {
+  text-align: center;
+  margin-top: 20vh;
+}
+
+/* Card */
+.card,
+img {
+  border-radius: 25px;
+  width: 95%;
+  height: 450px;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.card:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+/*# sourceMappingURL=reserve.css.map */

@@ -1,64 +1,38 @@
-/* Preset */
-
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-.light {
-  background-color: rgb(223, 215, 215);
-  color: rgb(29, 28, 28);
-}
-
-.dark {
-  background-color: rgb(29, 28, 28);
-  color: rgb(223, 215, 215);
-}
-
-.fontawesome {
-  font-family: fontawesome;
-}
-
-.container {
-  height: 100vh;
-  font-size: 1em;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-/*
-  black: rgb(0,0,0)
-  darkBlue: rgb(13, 18, 59)
-  white: rgb(212, 217, 255)
-  paleBlue: rgb(192, 197, 233)
-  intermediate: rgb(110, 118, 176)
-
-*/
-
-/* <flex> */
-
 .row {
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .center {
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 50px;
 }
 
 .y-center {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .space-between {
@@ -66,40 +40,16 @@ body {
 }
 
 .end {
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
-/* </flex> */
-
-.nav-link {
-  font-size: 2em;
-  font-weight: bold;
-  text-decoration: none;
-  color: inherit;
-}
-
-ul {
-  padding: 0;
-}
-
-li {
-  list-style-type: none;
-}
-
-/* Search Bar*/
 .search-input {
   width: 250px;
   font-size: 1em;
   text-indent: 5px;
   border: none;
-}
-
-.button-input {
-  font-size: 1em;
-}
-
-.search-input,
-.button-input {
   height: 40px;
   border-radius: 20px;
 }
@@ -108,41 +58,16 @@ li {
   margin-left: 10px;
 }
 
-.filter-button {
-  border-radius: 20px;
-  margin-left: 30px;
-  border: none;
-}
-
-.switchBtn {
-  font-size: 25px;
-  margin: 5% 5%;
-  border-radius: 35px;
-  height: 50px;
-  width: 50px;
-  border: none;
-}
-
-.light-button {
-  background-color: rgb(223, 215, 215);
-}
-
-.dark-button {
-  background-color: rgb(29, 28, 28);
-  color: rgb(223, 215, 215);
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-/* grid */
-
+/* reserve grid */
 .reserve-container {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: repeat(5, minmax(200px, 350px));
   grid-template-columns: repeat(5, minmax(200px, 350px));
   grid-row-gap: 10px;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 80vh;
   text-align: center;
   font-family: 'arial';
@@ -154,21 +79,106 @@ button:hover {
 }
 
 /* Card */
-
 .card,
 img {
   border-radius: 25px;
   width: 95%;
   height: 450px;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
 .card:hover {
   cursor: pointer;
-  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
-/* Seatings */
+.creditCard {
+  position: relative;
+  margin: 0 auto 0;
+  height: 25vh;
+}
+
+.frontSideCreditCard,
+.backSideCreditCard {
+  position: absolute;
+  display: inline-block;
+  border-radius: 15px;
+  border: solid black 1px;
+  width: 380px;
+  background-color: #2d45ca;
+}
+
+.frontSideCreditCard {
+  z-index: 2;
+  left: 40vw;
+  height: 20vh;
+}
+
+.backSideCreditCard {
+  z-index: 1;
+  left: 50vw;
+  margin-top: 3vh;
+  height: 19vh;
+}
+
+.magneticStripe {
+  background-color: #1d1c1c;
+  width: 100%;
+  height: 45px;
+  margin: 10% 0 0;
+}
+
+.cardNumber,
+.owner,
+.cardType,
+.expirationDate {
+  color: #999898;
+}
+
+.cvv {
+  text-align: right;
+  margin: 5% 5% 0;
+  padding: 1%;
+  height: 2vh;
+  border-radius: 3px;
+  font-size: 1.1em;
+  background-color: #a1a1a1;
+}
+
+.cardType {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  margin: 0 2% 2%;
+}
+
+.owner {
+  margin: 5% 2% 2%;
+  font-size: 1.1em;
+  position: absolute;
+  left: 0;
+}
+
+.cardNumber {
+  font-size: 1.3em;
+  margin: 10% 2% 2%;
+}
+
+.expirationDate {
+  margin: 5% 2% 2%;
+  position: absolute;
+  right: 30%;
+}
+
+.chipCard {
+  position: relative;
+  top: 15%;
+  left: 2%;
+}
 
 .screen {
   width: 65vw;
@@ -178,13 +188,13 @@ img {
 }
 
 .white-screen {
-  color: rgb(29, 28, 28);
-  background: rgb(223, 215, 215);
+  color: #1d1c1c;
+  background: #dfd7d7;
 }
 
 .black-screen {
-  color: rgb(223, 215, 215);
-  background: rgb(29, 28, 28);
+  color: #dfd7d7;
+  background: #1d1c1c;
 }
 
 .movieTitle {
@@ -198,14 +208,18 @@ img {
 }
 
 .seats-container {
+  display: -ms-grid;
   display: grid;
   margin: auto;
-  grid-template: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 2fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 2fr 1fr 1fr 1fr;
+      grid-template: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 2fr 1fr 1fr 1fr;
   height: 50vh;
   width: 50vw;
 }
 
 .seat {
+  display: -ms-grid;
   display: grid;
   width: 30px;
   height: 30px;
@@ -215,12 +229,12 @@ img {
 }
 
 .free:hover {
-  background-color: rgb(102, 185, 85);
+  background-color: #66b955;
   cursor: pointer;
 }
 
 .taken {
-  background-color: rgb(201, 76, 76);
+  background-color: #c94c4c;
 }
 
 .taken:hover {
@@ -228,7 +242,7 @@ img {
 }
 
 .selected {
-  background-color: rgb(102, 185, 85);
+  background-color: #66b955;
 }
 
 .selected:hover {
@@ -236,39 +250,46 @@ img {
 }
 
 .seat-footer-container {
+  display: -ms-grid;
   display: grid;
   margin: auto;
-  grid-template: 1fr 1fr / 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template: 1fr 1fr / 1fr 1fr 1fr;
   height: 20vh;
   width: 60vw;
 }
 
 .item-footer {
+  display: -ms-grid;
   display: grid;
   width: 100%;
   height: 100%;
 }
 
 .payment-button {
+  display: -ms-grid;
   display: grid;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-weight: bold;
   width: 50%;
   height: 50%;
   border-radius: 20px;
-  background-color: rgb(223, 215, 215);
+  background-color: #dfd7d7;
   text-align: center;
 }
 
 .payment-button:hover {
-  background-color: rgb(29, 28, 28);
-  color: rgb(223, 215, 215);
+  background-color: #1d1c1c;
+  color: #dfd7d7;
 }
 
 #hour-select {
   display: inline-block;
-  color: rgb(29, 28, 28);
-  background: rgb(223, 215, 215);
+  color: #1d1c1c;
+  background: #dfd7d7;
   width: 50%;
   border: none;
 }
@@ -276,14 +297,6 @@ img {
 .link {
   text-decoration: none;
 }
-
-/* BackButton */
-
-.backbutton:hover {
-  cursor: pointer;
-}
-
-/* Payment */
 
 .cardForm {
   margin: auto;
@@ -353,92 +366,86 @@ button:hover {
   height: 50px;
 }
 
-/* Credit Card */
-
-.creditCard {
-  position: relative;
-  margin: 0 auto 0;
-  height: 25vh;
+/* 
+  Gereral
+*/
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-.frontSideCreditCard,
-.backSideCreditCard {
-  position: absolute;
-  display: inline-block;
-  border-radius: 15px;
-  border: solid black 1px;
-  width: 380px;
-  background-color: rgb(45, 69, 202);
+.light {
+  background-color: #dfd7d7;
+  color: #1d1c1c;
 }
 
-.frontSideCreditCard {
-  z-index: 2;
-  left: 40vw;
-  height: 20vh;
+.dark {
+  background-color: #1d1c1c;
+  color: #dfd7d7;
 }
 
-.backSideCreditCard {
-  z-index: 1;
-  left: 50vw;
-  margin-top: 3vh;
-  height: 19vh;
+.fontawesome {
+  font-family: fontawesome;
 }
 
-.magneticStripe {
-  background-color: rgb(29, 28, 28);
-  width: 100%;
-  height: 45px;
-  margin: 10% 0 0;
+.container {
+  height: 100vh;
+  font-size: 1em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.cardNumber,
-.owner,
-.cardType,
-.expirationDate {
-  color: rgb(153, 152, 152);
+.nav-link {
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
 }
 
-.cvv {
-  text-align: right;
-  margin: 5% 5% 0;
-  padding: 1%;
-  height: 2vh;
-  border-radius: 3px;
-  font-size: 1.1em;
-  background-color: rgb(161, 161, 161);
+ul {
+  padding: 0;
 }
 
-.cardType {
-  position: absolute;
-  right: 10px;
-  bottom: 5px;
-  margin: 0 2% 2%;
+li {
+  list-style-type: none;
 }
 
-.owner {
-  margin: 5% 2% 2%;
-  font-size: 1.1em;
-  position: absolute;
-  left: 0;
+.filter-button {
+  border-radius: 20px;
+  margin-left: 30px;
+  border: none;
 }
 
-.cardNumber {
-  font-size: 1.3em;
-  margin: 10% 2% 2%;
+.switchBtn {
+  font-size: 25px;
+  margin: 5% 5%;
+  border-radius: 35px;
+  height: 50px;
+  width: 50px;
+  border: none;
 }
 
-.expirationDate {
-  margin: 5% 2% 2%;
-  position: absolute;
-  right: 30%;
+.light-button {
+  background-color: #dfd7d7;
 }
 
-.chipCard {
-  position: relative;
-  top: 15%;
-  left: 2%;
+.dark-button {
+  background-color: #1d1c1c;
+  color: #dfd7d7;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
+/* BackButton */
+.backbutton:hover {
+  cursor: pointer;
+}
+
+/* Footer */
 a:hover {
   cursor: pointer;
 }
+/*# sourceMappingURL=index.css.map */
