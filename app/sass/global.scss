@@ -1,0 +1,7 @@
+$light: rgb(223, 215, 215);
+$dark: rgb(29, 28, 28);
+
+@mixin setColor($textColor, $backgroundColor) {
+  color: $textColor;
+  background: $backgroundColor;
+}

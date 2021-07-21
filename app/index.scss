@@ -1,16 +1,10 @@
-$light: rgb(223, 215, 215);
-$dark: rgb(29, 28, 28);
-
-@import './sass/flex.scss';
-@import './sass/searchBar.scss';
-@import './sass/reserve.scss';
-@import './sass/creditCard.scss';
-@import './sass/seating.scss';
-@import './sass/payment.scss';
-
-/* 
-  Gereral
-*/
+@import './sass/global';
+@import './sass/flex';
+@import './sass/searchBar';
+@import './sass/reserve';
+@import './sass/creditCard';
+@import './sass/seating';
+@import './sass/payment';
 
 body {
   margin: 0;
@@ -20,13 +14,11 @@ body {
 }
 
 .light {
-  background-color: $light;
-  color: $dark;
+  @include setColor($dark, $light);
 }
 
 .dark {
-  background-color: $dark;
-  color: $light;
+  @include setColor($light, $dark);
 }
 
 .fontawesome {
@@ -71,6 +63,7 @@ li {
 
 .light-button {
   background-color: $light;
+  color: $dark;
 }
 
 .dark-button {

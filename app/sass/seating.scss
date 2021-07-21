@@ -1,3 +1,5 @@
+@import './global';
+
 .screen {
   width: 65vw;
   height: 2.5vh;
@@ -6,13 +8,11 @@
 }
 
 .white-screen {
-  color: $dark;
-  background: $light;
+  @include setColor($dark, $light);
 }
 
 .black-screen {
-  color: $light;
-  background: $dark;
+  @include setColor($light, $dark);
 }
 
 .movieTitle {
@@ -42,25 +42,26 @@
   border-radius: 15px 15px 0 0;
 }
 
-.free:hover {
-  background-color: rgb(102, 185, 85);
-  cursor: pointer;
+.free {
+  background-color: $light;
+  :hover {
+    background-color: rgb(102, 185, 85);
+    cursor: pointer;
+  }
 }
 
 .taken {
   background-color: rgb(201, 76, 76);
-}
-
-.taken:hover {
-  cursor: not-allowed;
+  :hover {
+    cursor: not-allowed;
+  }
 }
 
 .selected {
   background-color: rgb(102, 185, 85);
-}
-
-.selected:hover {
-  cursor: pointer;
+  :hover {
+    cursor: pointer;
+  }
 }
 
 .seat-footer-container {

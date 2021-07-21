@@ -9,7 +9,7 @@ function SeatingHeader({ movie, theme }) {
     <>
       <h1 className={`movieTitle flex center ${classBtn}`}>{movie}</h1>
       <div className='seat-header flex row center'>
-        Empty <div className={`seat ${classBtn}`} />
+        Empty <div className={`seat free`} />
         Taken <div className='seat taken' />
         Selected <div className='seat selected' />
       </div>

@@ -228,7 +228,11 @@ img {
   border-radius: 15px 15px 0 0;
 }
 
-.free:hover {
+.free {
+  background-color: #dfd7d7;
+}
+
+.free :hover {
   background-color: #66b955;
   cursor: pointer;
 }
@@ -237,7 +241,7 @@ img {
   background-color: #c94c4c;
 }
 
-.taken:hover {
+.taken :hover {
   cursor: not-allowed;
 }
 
@@ -245,7 +249,7 @@ img {
   background-color: #66b955;
 }
 
-.selected:hover {
+.selected :hover {
   cursor: pointer;
 }
 
@@ -366,9 +370,6 @@ button:hover {
   height: 50px;
 }
 
-/* 
-  Gereral
-*/
 body {
   margin: 0;
   padding: 0;
@@ -377,13 +378,13 @@ body {
 }
 
 .light {
-  background-color: #dfd7d7;
   color: #1d1c1c;
+  background: #dfd7d7;
 }
 
 .dark {
-  background-color: #1d1c1c;
   color: #dfd7d7;
+  background: #1d1c1c;
 }
 
 .fontawesome {
@@ -428,6 +429,7 @@ li {
 
 .light-button {
   background-color: #dfd7d7;
+  color: #1d1c1c;
 }
 
 .dark-button {
