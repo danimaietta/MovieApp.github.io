@@ -33,35 +33,38 @@
   width: 50vw;
 }
 
-.seat {
-  display: grid;
-  width: 30px;
-  height: 30px;
-  margin-left: 5px;
-  border: solid 2px black;
-  border-radius: 15px 15px 0 0;
+.freeLight {
+  color: $dark;
 }
 
-.free {
-  background-color: $light;
-  :hover {
-    background-color: rgb(102, 185, 85);
-    cursor: pointer;
-  }
+.freeDark {
+  color: $light;
+}
+
+.freeLight:hover {
+  color: rgb(102, 185, 85);
+  cursor: pointer;
+}
+
+.freeDark:hover {
+  color: rgb(102, 185, 85);
+  cursor: pointer;
 }
 
 .taken {
-  background-color: rgb(201, 76, 76);
-  :hover {
-    cursor: not-allowed;
-  }
+  color: rgb(201, 76, 76);
+}
+
+.taken:hover {
+  cursor: not-allowed;
 }
 
 .selected {
-  background-color: rgb(102, 185, 85);
-  :hover {
-    cursor: pointer;
-  }
+  color: rgb(102, 185, 85);
+}
+
+.selected:hover {
+  cursor: pointer;
 }
 
 .seat-footer-container {

@@ -9,7 +9,6 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -25,10 +24,15 @@ body {
   font-family: fontawesome;
 }
 
-.container {
-  height: 100vh;
+.container95 {
+  height: 95vh;
   font-size: 1em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container5 {
+  height: 5vh;
+  text-align: bottom;
 }
 
 .nav-link {
@@ -85,4 +89,20 @@ button:hover {
 
 a:hover {
   cursor: pointer;
+}
+
+.blue {
+  color: darkblue;
+}
+
+.marginRight {
+  margin-right: 30px;
+}
+
+.margin0 {
+  margin: 0;
+}
+
+.align-center {
+  text-align: center;
 }

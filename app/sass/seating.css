@@ -36,38 +36,37 @@
   width: 50vw;
 }
 
-.seat {
-  display: -ms-grid;
-  display: grid;
-  width: 30px;
-  height: 30px;
-  margin-left: 5px;
-  border: solid 2px black;
-  border-radius: 15px 15px 0 0;
+.freeLight {
+  color: #1d1c1c;
 }
 
-.free {
-  background-color: #dfd7d7;
+.freeDark {
+  color: #dfd7d7;
 }
 
-.free :hover {
-  background-color: #66b955;
+.freeLight:hover {
+  color: #66b955;
+  cursor: pointer;
+}
+
+.freeDark:hover {
+  color: #66b955;
   cursor: pointer;
 }
 
 .taken {
-  background-color: #c94c4c;
+  color: #c94c4c;
 }
 
-.taken :hover {
+.taken:hover {
   cursor: not-allowed;
 }
 
 .selected {
-  background-color: #66b955;
+  color: #66b955;
 }
 
-.selected :hover {
+.selected:hover {
   cursor: pointer;
 }
 

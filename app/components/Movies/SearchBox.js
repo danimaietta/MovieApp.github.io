@@ -34,7 +34,7 @@ export default function SearchBox({ movies, handler }) {
   }
 
   return (
-    <div className='flex center y-center row'>
+    <div className='flex center y-center'>
       <input
         className={`${classBtn} search-input fontawesome`}
         placeholder='&#xf002; Find a movie'

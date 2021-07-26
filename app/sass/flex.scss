@@ -1,10 +1,10 @@
-.row {
-  flex-direction: row;
-}
-
 .flex {
   display: flex;
   flex: 1;
+}
+
+.row {
+  flex-direction: row;
 }
 
 .center {
@@ -27,4 +27,8 @@
 
 .end {
   justify-content: flex-end;
+}
+
+.align-end {
+  align-items: flex-end;
 }

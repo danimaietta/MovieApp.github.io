@@ -29,7 +29,19 @@ function App() {
               path='/payment/:idMovie:movie:price:seatNames:date:hour'
               component={Payment}
             />
-            <Route render={() => <h1 className='flex center row'>404 Not Found</h1>} />
+            <Route
+              render={() => (
+                <div className='container95 align-center'>
+                  <h1 className=' margin0'>404 Not Found</h1>
+                  Click
+                  <a className='blue' onClick={() => window.location.replace('./')}>
+                    {' '}
+                    here{' '}
+                  </a>
+                  to return to the homepage
+                </div>
+              )}
+            />
           </Switch>
         </Router>
         <Footer />

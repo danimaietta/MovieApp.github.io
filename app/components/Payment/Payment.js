@@ -103,7 +103,7 @@ export default function Payment(props) {
   }
 
   return (
-    <div className='container'>
+    <div className='container95'>
       <BackButton history={props.history} />
       <h4 className='paymentTitle'>
         {`You are goig to watch ${movie} the ${date[1]} of ${months[date[0]]}`}
