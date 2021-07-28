@@ -2,7 +2,7 @@ export const validateCardNumber = (cardNumber = '') => {
   const cardNumberTrim = cardNumber.replace(/\s/g, '')
   const isNumber = !isNaN(cardNumberTrim)
   if (!isNumber) {
-    return '* letters only'
+    return '* numbers only'
   } else if (cardNumber.length < 19) {
     return `* incomplete`
   } else {

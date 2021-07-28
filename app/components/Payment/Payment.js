@@ -26,7 +26,7 @@ export default function Payment(props) {
     year: '2021',
     type: 'Visa'
   })
-  const [email, setEmail] = useState()
+  const [email, setEmail] = useState('')
   const [messages, setMessages] = useState({
     cardNumberError,
     ownerError,
@@ -51,12 +51,15 @@ export default function Payment(props) {
       cvvError: validateCVV(cvv),
       emailError: validateEmail(email)
     })
-    if (cardNumber && owner && email && cvv) {
+    if (cardNumber && owner && cvv && !validateEmail(email)) {
       setMessages({ ...messages, success: 'Loading...' })
       sendEmail({ ...props.location.state, email }).then(
         () => {
           setMessages({
-            ...messages,
+            cardNumberError: '',
+            ownerError: '',
+            cvvError: '',
+            emailError: '',
             success: `The email was sended successfuly. 
                       Enjoy the movie!`
           })
