@@ -30,28 +30,31 @@ export default function Reserve() {
   return (
     <div>
       <SearchBox movies={allMovies} handler={allMovies => handleChange(allMovies)} />
-      {filterMovies.length === 0 && (
-        <h2 className={`${classBtn} not-found-message`}>Not movies found</h2>
+      {filterMovies.length === 0 ? (
+        <div className=' container75 flex y-center center'>
+          <h2 className={`${classBtn}`}>Not movies found</h2>
+        </div>
+      ) : (
+        <ul className='reserve-container'>
+          {filterMovies.map((movie, i) => {
+            return (
+              <Link
+                key={i}
+                to={{
+                  pathname: `/seating/${movie.idMovie}${movie.title}`,
+                  search: `?id=${movie.idMovie}&movie=${movie.title}`,
+                  state: {
+                    id: movie.idMovie,
+                    movie
+                  }
+                }}
+              >
+                <Card poster={movie.poster_path} />
+              </Link>
+            )
+          })}
+        </ul>
       )}
-      <ul className='reserve-container'>
-        {filterMovies.map((movie, i) => {
-          return (
-            <Link
-              key={i}
-              to={{
-                pathname: `/seating/${movie.idMovie}${movie.title}`,
-                search: `?id=${movie.idMovie}&movie=${movie.title}`,
-                state: {
-                  id: movie.idMovie,
-                  movie
-                }
-              }}
-            >
-              <Card poster={movie.poster_path} />
-            </Link>
-          )
-        })}
-      </ul>
     </div>
   )
 }

@@ -2,12 +2,14 @@
 
 .reserve-container {
   display: grid;
+  min-height: 75vh;
   -ms-grid-columns: repeat(5, minmax(200px, 350px));
   grid-template-columns: repeat(5, minmax(200px, 350px));
   grid-row-gap: 10px;
   justify-content: center;
   text-align: center;
   font-family: 'arial';
+  margin: 0;
 }
 
 .not-found-message {
