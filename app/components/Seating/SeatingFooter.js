@@ -23,8 +23,8 @@ export default function SeatingFooter({
 
   const getDateFormat = () => {
     const month = date[0] < 10 ? `0${date[0]}` : date[0]
-    const year = date[1] < 10 ? `0${date[1]}` : date[1]
-    return `${month} / ${year}`
+    const day = date[1] < 10 ? `0${date[1]}` : date[1]
+    return `${day} / ${month}`
   }
 
   return (

@@ -13,7 +13,7 @@ function SeatingHeader({ movie, theme }) {
         Taken <MdEventSeat size='2em' className='taken' />
         Selected <MdEventSeat size='2em' className='selected' />
       </div>
-      <div className={`screen ${screenColor}`}>screen</div>
+      <div className={`screen ${screenColor}`} />
     </>
   )
 }

@@ -11,7 +11,7 @@ import JSONSeats from './utils/seating.json'
 
 function App() {
   localStorage.setItem('hour', '2:00pm')
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState('dark')
 
   const getJSONSeats = (hour = '2:00pm', idMovie) => {
     return JSONSeats.filter(jsonS => jsonS.id == idMovie && jsonS.hour == hour)[0].seats

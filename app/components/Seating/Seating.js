@@ -48,7 +48,6 @@ export default function Seating({ match, history }) {
   }
 
   const goToPayment = e => {
-    console.log(seatNames.length > 0)
     if (seatNames.length == 0) {
       setValidateMsg('At least one seat must be selected')
       e.preventDefault()

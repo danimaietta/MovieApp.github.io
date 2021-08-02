@@ -60,6 +60,11 @@
   border-radius: 20px;
 }
 
+.search-input:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
 .searchBox {
   margin-left: 10px;
 }
@@ -191,7 +196,8 @@ img {
   width: 65vw;
   height: 2.5vh;
   margin: 2vh auto 2vh;
-  text-align: center;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
 }
 
 .white-screen {
@@ -436,6 +442,11 @@ li {
   border: none;
 }
 
+.filter-button:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
 .switchBtn {
   font-size: 25px;
   margin: 5% 5%;
@@ -443,6 +454,11 @@ li {
   height: 50px;
   width: 50px;
   border: none;
+}
+
+.switchBtn:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .light-button {

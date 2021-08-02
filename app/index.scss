@@ -64,6 +64,10 @@ li {
   border: none;
 }
 
+.filter-button:hover {
+  transform: scale(1.2);
+}
+
 .switchBtn {
   font-size: 25px;
   margin: 5% 5%;
@@ -71,6 +75,10 @@ li {
   height: 50px;
   width: 50px;
   border: none;
+}
+
+.switchBtn:hover {
+  transform: scale(1.2);
 }
 
 .light-button {

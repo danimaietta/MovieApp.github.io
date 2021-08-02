@@ -29,7 +29,7 @@ export default function Reserve() {
 
   return (
     <div>
-      <SearchBox movies={allMovies} handler={allMovies => handleChange(allMovies)} />
+      <SearchBox movies={allMovies} handler={setFilterMovies} />
       {filterMovies.length === 0 ? (
         <div className=' container75 flex y-center center'>
           <h2 className={`${classBtn}`}>Not movies found</h2>
