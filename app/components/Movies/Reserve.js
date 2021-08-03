@@ -4,15 +4,18 @@ import Card from './Card'
 import { getAllMovies } from '../../utils/api'
 import { Link } from 'react-router-dom'
 import LocaleContext from '../../context/LocaleContext'
+import Loading from './Loading'
 //import seatsGenerator from '../../utils/seatsGenerator'
 
 export default function Reserve() {
   const [allMovies, setAllMovies] = useState([])
+  const [loading, setLoading] = useState(false)
   const [filterMovies, setFilterMovies] = useState([])
   const { theme } = useContext(LocaleContext)
   const classBtn = theme == 'light' ? 'light-button' : 'dark-button'
 
   useEffect(() => {
+    setLoading(true)
     async function getMovies() {
       const movies = await getAllMovies()
       const moviesWithIds = movies.map((m, i) => {
@@ -20,12 +23,15 @@ export default function Reserve() {
       })
       setAllMovies(moviesWithIds)
       setFilterMovies(moviesWithIds)
+      setLoading(false)
       //const allSeats = seatsGenerator(movies.map(m => m.title))
     }
     getMovies()
   }, [])
 
-  const handleChange = movies => setFilterMovies(movies)
+  if (loading === true) {
+    return <Loading />
+  }
 
   return (
     <div>
