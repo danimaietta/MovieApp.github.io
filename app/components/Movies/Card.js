@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Proptypes from 'prop-types'
 
-export default function Card({ poster }) {
+function Card({ poster }) {
+  console.count('Card')
   return (
     <div className='card'>
       <img
@@ -11,6 +12,8 @@ export default function Card({ poster }) {
     </div>
   )
 }
+
+export default memo(Card)
 
 Card.propType = {
   poster: Proptypes.string

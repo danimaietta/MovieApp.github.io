@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
 import { RiNewspaperLine } from 'react-icons/Ri'
 
-export default function Footer() {
+function Footer() {
+  console.count('Footer')
+
   return (
     <div className='flex center container5 align-end'>
       <span className='marginRight'> Dev. Daniel Maietta </span>
@@ -32,3 +34,5 @@ export default function Footer() {
     </div>
   )
 }
+
+export default memo(Footer)

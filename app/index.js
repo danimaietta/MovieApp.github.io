@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import Reserve from './components/Movies/Reserve'
+import Home from './components/Movies/Home'
 import Seating from './components/Seating/Seating'
 import Payment from './components/Payment/Payment'
 import Footer from './components/Footer/Footer'
@@ -22,7 +22,7 @@ function App() {
       <div className={theme}>
         <Router>
           <Switch>
-            <Route exact path='/' component={Reserve} />
+            <Route exact path='/' component={Home} />
             <Route exact path='/seating/:id:movie' component={Seating} />
             <Route
               exact

@@ -11,6 +11,8 @@ export default function CreditCard({
   year,
   type
 }) {
+  console.count('CreditCard')
+
   return (
     <div className='creditCard'>
       <div className='frontSideCreditCard'>

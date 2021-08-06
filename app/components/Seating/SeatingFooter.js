@@ -27,6 +27,8 @@ export default function SeatingFooter({
     return `${day} / ${month}`
   }
 
+  console.count('SeatingFooter')
+
   return (
     <div className='seat-footer-container'>
       <div className='item-footer'>Date: {getDateFormat()}</div>

@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, memo } from 'react'
 import LocaleContext from '../../context/LocaleContext'
 
-export default function FlashLight() {
+function FlashLight() {
   const { theme, setTheme } = useContext(LocaleContext)
   const classBtn = theme == 'light' ? 'light-button' : 'dark-button'
+  console.count('FlashLight')
 
   const toggleTheme = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light')
@@ -15,3 +16,5 @@ export default function FlashLight() {
     </button>
   )
 }
+
+export default memo(FlashLight)

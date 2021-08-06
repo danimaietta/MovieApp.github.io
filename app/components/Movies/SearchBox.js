@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, memo } from 'react'
 import FlashLight from './FlashLight'
 import LocaleContext from '../../context/LocaleContext'
 import PropTypes from 'prop-types'
 
-export default function SearchBox({ movies, handler }) {
+function SearchBox({ movies, handler }) {
   const { theme } = useContext(LocaleContext)
   const classBtn = theme == 'light' ? 'light-button' : 'dark-button'
 
@@ -14,25 +14,31 @@ export default function SearchBox({ movies, handler }) {
   }
 
   const handleChange = event => {
-    let filteredMovies = filterMoviesByTitle(event.target.value)
-    handler(filteredMovies)
+    handler({ type: 'updateMovies', movies: filterMoviesByTitle(event.target.value) })
   }
 
   const filterByPopularity = () => {
-    handler(movies.sort((a, b) => b.popularity - a.popularity).slice(0, 10))
+    handler({
+      type: 'updateMovies',
+      movies: movies.sort((a, b) => b.popularity - a.popularity).slice(0, 20)
+    })
   }
 
   const filterByVoted = () => {
-    handler(movies.sort((a, b) => b.vote_count - a.vote_count).slice(0, 10))
+    handler({
+      type: 'updateMovies',
+      movies: movies.sort((a, b) => b.vote_count - a.vote_count).slice(0, 20)
+    })
   }
 
   const filterByAdults = () => {
-    handler(movies.filter(movie => movie.adult && movie))
+    handler({
+      type: 'updateMovies',
+      movies: movies.filter(movie => movie.adult && movie)
+    })
   }
 
-  const filterByKids = () => {
-    handler(movies.filter(movie => !movie.adult && movie))
-  }
+  console.count('SearchBox')
 
   return (
     <div className='flex center y-center container20'>
@@ -51,13 +57,12 @@ export default function SearchBox({ movies, handler }) {
       <button onClick={filterByAdults} className={`filter-button ${classBtn}`}>
         Adults Only
       </button>
-      <button onClick={filterByKids} className={`filter-button ${classBtn}`}>
-        Kids
-      </button>
       <FlashLight />
     </div>
   )
 }
+
+export default memo(SearchBox)
 
 SearchBox.propTypes = {
   movies: PropTypes.arrayOf(
@@ -78,6 +83,6 @@ SearchBox.propTypes = {
       vote_average: PropTypes.number,
       vote_count: PropTypes.number
     })
-  ).isRequired,
+  ),
   handler: PropTypes.func.isRequired
 }

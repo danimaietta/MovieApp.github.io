@@ -66,6 +66,8 @@ export default function Seating({ match, history }) {
     }
   }
 
+  console.count('Seating')
+
   return (
     <div className='container95'>
       <BackButton history={history} />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useReducer, useEffect, useContext } from 'react'
 import SearchBox from './SearchBox'
 import Card from './Card'
 import { getAllMovies } from '../../utils/api'
@@ -7,41 +7,60 @@ import LocaleContext from '../../context/LocaleContext'
 import Loading from './Loading'
 //import seatsGenerator from '../../utils/seatsGenerator'
 
-export default function Reserve() {
-  const [allMovies, setAllMovies] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [filterMovies, setFilterMovies] = useState([])
+export default function Home() {
   const { theme } = useContext(LocaleContext)
   const classBtn = theme == 'light' ? 'light-button' : 'dark-button'
 
+  function reducer(state, action) {
+    //console.log('action.movies', action.movies)
+    if (action.type === 'firstLoad') {
+      return {
+        allMovies: action.movies,
+        filterMovies: action.movies,
+        loading: false
+      }
+    } else if (action.type === 'updateMovies') {
+      return {
+        ...state,
+        filterMovies: action.movies,
+        loading: false
+      }
+    }
+  }
+
+  const [home, dispatch] = useReducer(reducer, {
+    allMovies: [],
+    filterMovies: [],
+    loading: true
+  })
+
+  const { allMovies, filterMovies, loading } = home
+
   useEffect(() => {
-    setLoading(true)
     async function getMovies() {
       const movies = await getAllMovies()
-      const moviesWithIds = movies.map((m, i) => {
-        return { ...m, idMovie: i + 1 }
-      })
-      setAllMovies(moviesWithIds)
-      setFilterMovies(moviesWithIds)
-      setLoading(false)
-      //const allSeats = seatsGenerator(movies.map(m => m.title))
+      return movies.map((m, i) => ({ ...m, idMovie: i + 1 }))
     }
-    getMovies()
+    getMovies().then(movies => {
+      dispatch({ type: 'firstLoad', movies })
+    })
   }, [])
 
   if (loading === true) {
     return <Loading />
   }
 
+  console.count('Home')
+
   return (
     <div>
-      <SearchBox movies={allMovies} handler={setFilterMovies} />
+      <SearchBox movies={allMovies} handler={dispatch} />
       {filterMovies.length === 0 ? (
         <div className=' container75 flex y-center center'>
           <h2 className={`${classBtn}`}>Not movies found</h2>
         </div>
       ) : (
-        <ul className='reserve-container'>
+        <ul className='home-container'>
           {filterMovies.map((movie, i) => {
             return (
               <Link

@@ -1,5 +1,5 @@
 /* reserve grid */
-.reserve-container {
+.home-container {
   display: -ms-grid;
   display: grid;
   min-height: 75vh;

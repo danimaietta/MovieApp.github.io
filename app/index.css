@@ -36,7 +36,7 @@
 }
 
 .space-between {
-  margin: 5% 5%;
+  margin: 3% 3%;
 }
 
 .end {
@@ -70,7 +70,7 @@
 }
 
 /* reserve grid */
-.reserve-container {
+.home-container {
   display: -ms-grid;
   display: grid;
   min-height: 75vh;
