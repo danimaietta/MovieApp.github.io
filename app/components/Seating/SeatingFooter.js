@@ -51,7 +51,7 @@ export default function SeatingFooter({
       <Link
         className='link'
         to={{
-          pathname: `/payment/${idMovie}${movie}${price}${seats}${date}${hour}`,
+          pathname: `/MovieApp/payment/${idMovie}${movie}${price}${seats}${date}${hour}`,
           state: { idMovie, movie, price, seatNames: seats, date, hour }
         }}
       >

@@ -22,11 +22,11 @@ function App() {
       <div className={theme}>
         <Router>
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/seating/:id:movie' component={Seating} />
+            <Route exact path='/MovieApp' component={Home} />
+            <Route exact path='/MovieApp/seating/:id:movie' component={Seating} />
             <Route
               exact
-              path='/payment/:idMovie:movie:price:seatNames:date:hour'
+              path='/MovieApp/payment/:idMovie:movie:price:seatNames:date:hour'
               component={Payment}
             />
             <Route
@@ -34,7 +34,10 @@ function App() {
                 <div className='container95 align-center'>
                   <h1 className=' margin0'>404 Not Found</h1>
                   Click
-                  <a className='blue' onClick={() => window.location.replace('./')}>
+                  <a
+                    className='blue'
+                    onClick={() => window.location.replace('./MovieApp')}
+                  >
                     {' '}
                     here{' '}
                   </a>

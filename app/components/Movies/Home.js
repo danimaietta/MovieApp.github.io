@@ -69,7 +69,7 @@ export default function Home() {
               <Link
                 key={i}
                 to={{
-                  pathname: `/seating/${movie.idMovie}${movie.title}`,
+                  pathname: `/MovieApp/seating/${movie.idMovie}${movie.title}`,
                   search: `?id=${movie.idMovie}&movie=${movie.title}`,
                   state: {
                     id: movie.idMovie,
