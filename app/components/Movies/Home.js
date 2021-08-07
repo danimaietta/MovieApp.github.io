@@ -12,7 +12,6 @@ export default function Home() {
   const classBtn = theme == 'light' ? 'light-button' : 'dark-button'
 
   function reducer(state, action) {
-    //console.log('action.movies', action.movies)
     if (action.type === 'firstLoad') {
       return {
         allMovies: action.movies,
@@ -38,8 +37,12 @@ export default function Home() {
 
   useEffect(() => {
     async function getMovies() {
-      const movies = await getAllMovies()
-      return movies.map((m, i) => ({ ...m, idMovie: i + 1 }))
+      try {
+        const movies = await getAllMovies()
+        return movies.map((m, i) => ({ ...m, idMovie: i + 1 }))
+      } catch (e) {
+        console.log({ e })
+      }
     }
     getMovies().then(movies => {
       dispatch({ type: 'firstLoad', movies })
