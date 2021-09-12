@@ -67,6 +67,7 @@ export default function Home() {
           {filterMovies.map((movie, i) => {
             return (
               <Link
+                id={`id${i}`}
                 key={i}
                 to={{
                   pathname: `/MovieApp/seating/${movie.idMovie}${movie.title}`,

@@ -43,6 +43,7 @@ function SearchBox({ movies, handler }) {
   return (
     <div className='flex center y-center container20'>
       <input
+        id='searchBox'
         className={`${classBtn} search-input fontawesome`}
         placeholder='&#xf002; Find a movie'
         type='text'
