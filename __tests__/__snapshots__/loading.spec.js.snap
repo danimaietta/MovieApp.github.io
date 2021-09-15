@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading Check if displays Loading... message : 
+    <div
+       class=" container95 flex y-center center"
+     >
+       <h2
+         class="dark-button"
+       >
+         Loading...
+       </h2>
+     </div>
+     1`] = `
+<div
+  class=" container95 flex y-center center"
+>
+  <h2
+    class="dark-button"
+  >
+    Loading...
+  </h2>
+</div>
+`;
