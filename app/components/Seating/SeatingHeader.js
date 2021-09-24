@@ -5,8 +5,6 @@ function SeatingHeader({ movie, theme }) {
   const classBtn = theme == 'light' ? 'light-button' : 'dark-button'
   const screenColor = theme == 'light' ? 'black-screen' : 'white-screen'
 
-  console.count('SeatingHeader')
-
   return (
     <>
       <h1 className={`movieTitle flex center ${classBtn}`}>{movie}</h1>

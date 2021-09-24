@@ -32,7 +32,11 @@ describe('Home', () => {
     )
     // you have to use getAllByText when the text is inside multiple divs
     const dom = screen.getAllByText(() => /notFound/i)
-    console.log('------ DOM ' + dom)
+    for (const prop in dom) {
+      for (const p in prop) {
+        console.log('DOM ' + p)
+      }
+    }
     expect.anything(dom)
   })
 })

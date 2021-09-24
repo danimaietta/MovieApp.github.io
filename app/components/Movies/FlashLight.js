@@ -4,7 +4,6 @@ import LocaleContext from '../../context/LocaleContext'
 function FlashLight() {
   const { theme, setTheme } = useContext(LocaleContext)
   const classBtn = theme == 'light' ? 'light-button' : 'dark-button'
-  console.count('FlashLight')
 
   const toggleTheme = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light')

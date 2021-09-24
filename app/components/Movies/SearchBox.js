@@ -38,8 +38,6 @@ function SearchBox({ movies, handler }) {
     })
   }
 
-  console.count('SearchBox')
-
   return (
     <div className='flex center y-center container20'>
       <input

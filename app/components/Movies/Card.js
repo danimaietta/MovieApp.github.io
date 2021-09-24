@@ -1,7 +1,6 @@
 import React, { memo } from 'react'
 import Proptypes from 'prop-types'
 function Card({ poster }) {
-  console.count('Card')
   return (
     <div className='card'>
       <img

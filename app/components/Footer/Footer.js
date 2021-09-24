@@ -3,8 +3,6 @@ import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
 import { RiNewspaperLine } from 'react-icons/Ri'
 
 function Footer() {
-  console.count('Footer')
-
   return (
     <div className='flex center container5 align-end'>
       <span className='marginRight'> Dev. Daniel Maietta </span>

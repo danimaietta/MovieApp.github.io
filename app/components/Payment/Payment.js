@@ -105,8 +105,6 @@ export default function Payment(props) {
     setCardInfo({ ...cardInfo, [attribute]: e.target.value })
   }
 
-  console.count('Payment')
-
   return (
     <div className='container95'>
       <BackButton history={props.history} />

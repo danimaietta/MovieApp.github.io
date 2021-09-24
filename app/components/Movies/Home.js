@@ -57,8 +57,6 @@ export default function Home() {
     return <Loading />
   }
 
-  console.count('Home')
-
   return (
     <div data-testid='home-container'>
       <SearchBox movies={allMovies} handler={dispatch} />
