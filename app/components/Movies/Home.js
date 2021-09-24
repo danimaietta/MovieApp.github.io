@@ -36,6 +36,7 @@ export default function Home() {
   const { allMovies, filterMovies, loading } = home
 
   useEffect(() => {
+    let isMounted = true
     async function getMovies() {
       try {
         const movies = await getAllMovies()
@@ -45,8 +46,11 @@ export default function Home() {
       }
     }
     getMovies().then(movies => {
-      dispatch({ type: 'firstLoad', movies })
+      if (isMounted) dispatch({ type: 'firstLoad', movies })
     })
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   if (loading === true) {
@@ -56,18 +60,19 @@ export default function Home() {
   console.count('Home')
 
   return (
-    <div>
+    <div data-testid='home-container'>
       <SearchBox movies={allMovies} handler={dispatch} />
       {filterMovies.length === 0 ? (
         <div className=' container75 flex y-center center'>
-          <h2 className={`${classBtn}`}>Not movies found</h2>
+          <h2 className={`${classBtn}`} title='notFound'>
+            Not movies found
+          </h2>
         </div>
       ) : (
         <ul className='home-container'>
           {filterMovies.map((movie, i) => {
             return (
               <Link
-                data-testid={`id${i}`}
                 key={i}
                 to={{
                   pathname: `/MovieApp/seating/${movie.idMovie}${movie.title}`,

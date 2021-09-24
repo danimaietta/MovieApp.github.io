@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "prod": "SET NODE_ENV='production' && webpack",
-    "test": "jest --watch  --detectOpenHandles"
+    "test": "jest --watch"
   },
   "babel": {
     "presets": [
@@ -38,10 +38,9 @@
     "qrcode.react": "^1.0.1",
     "query-string": "^6.11.1",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "react-dom": "^16.14.0",
     "react-icons": "^3.11.0",
-    "react-router-dom": "^5.1.2",
-    "react-test-renderer": "^17.0.2"
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

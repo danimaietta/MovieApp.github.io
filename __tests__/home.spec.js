@@ -1,8 +1,10 @@
-import React, { act } from 'react'
+import React from 'react'
 import LocaleContext from '../app/context/LocaleContext'
-import { render, screen, fireEvent, cleanup } from '@testing-library/react'
-import ReactTestUtils from 'react-dom/test-utils' // ES6
+import { screen, fireEvent, getRoles, getByTestId } from '@testing-library/dom'
+import { render, cleanup } from '@testing-library/react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from '../app/components/Movies/Home'
+import Loading from '../app/components/Movies/Loading'
 require('jest-fetch-mock').enableMocks()
 
 jest.mock('jest-fetch-mock')
@@ -11,16 +13,26 @@ const theme = 'dark'
 
 afterEach(cleanup)
 
-describe('Cards', () => {
-  test('Onclick a card', () => {
-    const { queryByTestId } = act(() => {
-      render(
-        <LocaleContext.Provider value={{ theme }}>
-          <Home />
-        </LocaleContext.Provider>
-      )
-    })
-    console.log('------------------------' + queryByTestId('id0'))
-    fireEvent.click(queryByTestId('id0'))
+describe('Home', () => {
+  /*test('Some home function', () => {
+    render(
+      <LocaleContext.Provider value={{ theme }}>
+        <Home />
+      </LocaleContext.Provider>
+    )
+    const element = screen.getByTestId('home-container')
+    console.log('------ Element ' + element)
+    //fireEvent.click(dom)
+  })*/
+  test('Some home function', () => {
+    render(
+      <LocaleContext.Provider value={{ theme }}>
+        <Home />
+      </LocaleContext.Provider>
+    )
+    // you have to use getAllByText when the text is inside multiple divs
+    const dom = screen.getAllByText(() => /notFound/i)
+    console.log('------ DOM ' + dom)
+    expect.anything(dom)
   })
 })
