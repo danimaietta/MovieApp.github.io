@@ -22,9 +22,9 @@ export default function CreditCard({
         <p className='expirationDate'>
           {new Date(`${month} 25, 1995 23:15:30`).getMonth() + 1}/{year.slice(2, 4)}
         </p>
-        <div className='cardType'>
-          {type === 'Visa' && <FaCcVisa size='4em' />}
-          {type === 'Paypal' && <FaCcPaypal size='4em' />}
+        <div className='cardType' role='cardTypeRole'>
+          {type === 'Visa' && <FaCcVisa size='4em' placeholder='visa' />}
+          {type === 'Paypal' && <FaCcPaypal size='4em' placeholder='paypal' />}
           {type === 'MasterCard' && <FaCcMastercard size='4em' />}
         </div>
       </div>
