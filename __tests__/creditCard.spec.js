@@ -1,5 +1,5 @@
 import React from 'react'
-import { screen, fireEvent, getRoles, getByTestId } from '@testing-library/dom'
+import { screen } from '@testing-library/dom'
 import { render, cleanup, prettyDOM } from '@testing-library/react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CreditCard from '../app/components/Payment/CreditCard'

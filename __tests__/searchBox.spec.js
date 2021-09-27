@@ -1,15 +1,34 @@
 import React, { useRef } from 'react'
 import SearchBox from '../app/components/Movies/SearchBox'
-import { render } from '@testing-library/react'
+import LocaleContext from '../app/context/LocaleContext'
+import { screen } from '@testing-library/dom'
+import { render, cleanup, fireEvent, prettyDOM } from '@testing-library/react'
 const puppeteer = require('puppeteer')
 
-//const SB = jest.mock('../app/components/Movies/SearchBox').fn()
+const theme = 'dark'
+
+const searchBox = () => {
+  render(
+    <LocaleContext.Provider value={{ theme }}>
+      <SearchBox movies={[]} handler={jest.fn()} />
+    </LocaleContext.Provider>
+  )
+}
+
+afterEach(cleanup)
+beforeEach(searchBox)
 
 describe('Filter functions', () => {
-  test('Check if filter works ', () => {
-    //const sb = render(<SearchBox handler={jest.fn()} />)
-    //console.log(sb)
-    //expect(SB.filterByPopularity()).toBeDefined()
+  test('Check if Most Popular filter button exists', () => {
+    const mp = screen.getByText(/most popular/i)
+    expect(mp).toBeDefined()
+  })
+  test('Check if Most Popular filter button works', () => {
+    const filterByPopularity = jest.fn()
+    const mp = screen.getByText(/most popular/i)
+    console.log('--- mp ' + prettyDOM(mp))
+    fireEvent.click(mp)
+    expect(filterByPopularity).toHaveBeenCalledTimes(1)
   })
   /* test('should find movies with the letter A in it', async () => {
     const browser = await puppeteer.launch({
