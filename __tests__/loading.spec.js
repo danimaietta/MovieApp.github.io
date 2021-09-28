@@ -14,12 +14,12 @@ const theme = 'dark'
 
 describe('Loading', () => {
   test('Check if displays Loading... message ', () => {
-    const { getByText } = render(
+    render(
       <LocaleContext.Provider value={{ theme }}>
         <Loading />
       </LocaleContext.Provider>
     )
-    expect(getByText('Loading...')).toBeInTheDocument()
+    expect(screen.getByText(/Loading.../i)).toBeInTheDocument()
   })
   test('Check if displays Loading... message ', () => {
     const { container } = render(
