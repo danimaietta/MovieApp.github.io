@@ -1,13 +1,7 @@
 import React from 'react'
 import Loading from '../app/components/Movies/Loading'
 import LocaleContext from '../app/context/LocaleContext'
-import {
-  render,
-  screen,
-  fireEvent,
-  queryByTestId,
-  queryByPlaceholderText
-} from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
 const theme = 'dark'

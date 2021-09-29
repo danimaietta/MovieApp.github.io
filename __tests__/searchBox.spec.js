@@ -21,26 +21,35 @@ afterEach(cleanup)
 beforeEach(searchBox)
 
 describe('Filter functions', () => {
+  test('Check if searchBox filter input exists', () => {
+    expect(screen.getByPlaceholderText(/Find a movie/i)).toBeDefined()
+  })
+  test('Check if searchBox filter input works', () => {
+    fireEvent.change(screen.getByPlaceholderText(/Find a movie/i), {
+      target: { value: 'movie' }
+    })
+    expect(handleClick).toHaveBeenCalledTimes(1)
+  })
   test('Check if Most Popular filter button exists', () => {
     expect(screen.getByText(/most popular/i)).toBeDefined()
   })
   test('Check if Most Popular filter button works', () => {
     fireEvent.click(screen.getByText(/most popular/i))
-    expect(handleClick).toHaveBeenCalledTimes(1)
+    expect(handleClick).toHaveBeenCalledTimes(2)
   })
   test('Check if Most Voted filter button exists', () => {
     expect(screen.getByText(/most voted/i)).toBeDefined()
   })
   test('Check if Most Voted filter button works', () => {
     fireEvent.click(screen.getByText(/most voted/i))
-    expect(handleClick).toHaveBeenCalledTimes(2)
+    expect(handleClick).toHaveBeenCalledTimes(3)
   })
   test('Check if Adults Only filter button exists', () => {
     expect(screen.getByText(/adults only/i)).toBeDefined()
   })
   test('Check if Adults Only filter button works', () => {
     fireEvent.click(screen.getByText(/adults only/i))
-    expect(handleClick).toHaveBeenCalledTimes(3)
+    expect(handleClick).toHaveBeenCalledTimes(4)
   })
 })
 

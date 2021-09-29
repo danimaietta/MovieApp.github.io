@@ -7,10 +7,9 @@ require('jest-fetch-mock').enableMocks()
 jest.mock('jest-fetch-mock')
 
 describe('Cards', () => {
-  test('Onclick a card', () => {
+  test('Check if card exists', () => {
     render(<Card />)
     const card = screen.getByAltText(/card not found/i)
-    console.log('---- Card: ' + card)
-    expect.anything(card)
+    expect(card).toBeTruthy()
   })
 })

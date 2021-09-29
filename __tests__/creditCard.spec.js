@@ -1,9 +1,7 @@
 import React from 'react'
 import { screen } from '@testing-library/dom'
-import { render, cleanup, prettyDOM } from '@testing-library/react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { render, cleanup } from '@testing-library/react'
 import CreditCard from '../app/components/Payment/CreditCard'
-import { FaCcVisa, FaCcPaypal, FaCcMastercard } from 'react-icons/fa'
 
 const creditCard = () => {
   render(
