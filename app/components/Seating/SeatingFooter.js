@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 export default function SeatingFooter({
   idMovie,
-  movie,
+  movie = '',
   seatCount = 0,
   seatNames = [],
   selectSeatsByHour,
@@ -33,7 +33,11 @@ export default function SeatingFooter({
       <div className='item-footer'>
         <div>
           Hour: {'    '}
-          <select id='hour-select' onChange={e => getHour(e)} value={hour}>
+          <select
+            id='hour-select'
+            onChange={e => getHour(e)}
+            value={hour !== null ? hour : '2:00pm'}
+          >
             {hoursList.map((h, i) => {
               return (
                 <option key={i} value={h}>
@@ -64,7 +68,7 @@ export default function SeatingFooter({
 
 SeatingFooter.propTypes = {
   idMovie: PropTypes.number.isRequired,
-  movie: PropTypes.string.isRequired,
+  movie: PropTypes.string,
   seatCount: PropTypes.number.isRequired,
   seatNames: PropTypes.arrayOf(PropTypes.string),
   selectSeatsByHour: PropTypes.func.isRequired,

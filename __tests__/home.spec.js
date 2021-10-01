@@ -21,12 +21,12 @@ const MockHome = () => {
 
 afterEach(cleanup)
 
-describe('Home', () => {
+xdescribe('Home', () => {
   test('Some home function', () => {
     render(<MockHome />)
     // you have to use getAllByText when the text is inside multiple divs
     //const dom = screen.getAllByText(/Not movies found/i)
-    console.log('DOM ' + screen.debug())
+    //console.log('DOM ' + screen.debug())
     //constexpect.anything(dom)
   })
 })

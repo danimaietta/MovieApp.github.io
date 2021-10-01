@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { MdEventSeat } from 'react-icons/md'
-function SeatingHeader({ movie, theme }) {
+function SeatingHeader({ movie = '', theme }) {
   const classBtn = theme == 'light' ? 'light-button' : 'dark-button'
   const screenColor = theme == 'light' ? 'black-screen' : 'white-screen'
 
@@ -20,7 +20,7 @@ function SeatingHeader({ movie, theme }) {
 
 SeatingHeader.propTypes = {
   theme: PropTypes.string.isRequired,
-  movie: PropTypes.string.isRequired
+  movie: PropTypes.string
 }
 
 export default React.memo(SeatingHeader)

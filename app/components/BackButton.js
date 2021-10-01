@@ -3,7 +3,12 @@ import { BsFillCaretLeftFill } from 'react-icons/bs'
 
 function BackButton({ history }) {
   return (
-    <BsFillCaretLeftFill className='backbutton' onClick={history.goBack} size={'2em'} />
+    <BsFillCaretLeftFill
+      role='bckbtn'
+      className='backbutton'
+      onClick={history.goBack}
+      size={'2em'}
+    />
   )
 }
 

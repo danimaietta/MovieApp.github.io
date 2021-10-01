@@ -70,10 +70,11 @@ export default function Seating({ match, history }) {
     <div className='container95'>
       <BackButton history={history} />
       <SeatingHeader movie={movie} theme={theme} />
-      <div className='seats-container'>
+      <div className='seats-container' role='seatsContainer'>
         {seats.map((seat, i) => {
           return (
             <MdEventSeat
+              role={'seat' + i}
               key={i}
               className={`${toggleSeatClass(seat)}`}
               size='2em'

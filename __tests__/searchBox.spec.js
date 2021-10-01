@@ -1,8 +1,8 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import SearchBox from '../app/components/Movies/SearchBox'
 import LocaleContext from '../app/context/LocaleContext'
 import { screen } from '@testing-library/dom'
-import { render, cleanup, fireEvent, prettyDOM } from '@testing-library/react'
+import { render, cleanup, fireEvent } from '@testing-library/react'
 const puppeteer = require('puppeteer')
 
 const theme = 'dark'
