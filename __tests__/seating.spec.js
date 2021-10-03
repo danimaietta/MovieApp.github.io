@@ -14,7 +14,7 @@ const seating = () => {
   const getJSONSeats = jest.fn((hour, id) => JSONSeats)
 
   // SeatingHeader
-  const movie = 'Karate kid'
+  const movie = 'Karate Kid'
 
   // SeatingFooter
   const idMovie = 1
