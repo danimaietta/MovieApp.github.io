@@ -203,7 +203,11 @@ export default function Payment(props) {
         </div>
         <div className='flex center email space-between'>
           <p>Email:</p>
-          <input maxLength='30' onChange={e => setEmail(e.target.value)}></input>
+          <input
+            maxLength='30'
+            onChange={e => setEmail(e.target.value)}
+            role='emailInput'
+          ></input>
           {emailError && <p className='error'>{emailError}</p>}
         </div>
         <div className='flex center space-between'>
