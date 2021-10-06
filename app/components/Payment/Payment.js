@@ -109,7 +109,7 @@ export default function Payment(props) {
     <div className='container95'>
       <BackButton history={props.history} />
       <h4 className='paymentTitle'>
-        {`You are goig to watch ${movie} the ${date[1]} of ${months[date[0]]}`}
+        {`You are going to watch ${movie} the ${date[1]} of ${months[date[0]]}`}
         <br />
         {`at ${hour} in the seat(s) ${seatNames} for $${price}`}
       </h4>
@@ -154,7 +154,7 @@ export default function Payment(props) {
           <div className='col'>
             <p>Expiration Date</p>
             <div className='row'>
-              <select onChange={handleChange('month')}>
+              <select onChange={handleChange('month')} role='monthSelect'>
                 {months.map((m, i) => {
                   return (
                     <option key={i} value={m}>
@@ -163,7 +163,7 @@ export default function Payment(props) {
                   )
                 })}
               </select>
-              <select id='slcYear' onChange={handleChange('year')}>
+              <select id='slcYear' onChange={handleChange('year')} role='yearSelect'>
                 {years.map((y, i) => {
                   return (
                     <option key={i} value={y}>
@@ -179,6 +179,7 @@ export default function Payment(props) {
           <div className='col'>
             <FaCcVisa
               className='faCCard'
+              role='faCcVisa'
               onClick={() => setCardInfo({ ...cardInfo, type: 'Visa' })}
               size='3em'
             />
@@ -186,6 +187,7 @@ export default function Payment(props) {
           <div className='col'>
             <FaCcPaypal
               className='faCCard'
+              role='faCcPaypal'
               onClick={() => setCardInfo({ ...cardInfo, type: 'Paypal' })}
               size='3em'
             />
@@ -193,6 +195,7 @@ export default function Payment(props) {
           <div className='col'>
             <FaCcMastercard
               className='faCCard'
+              role='faCcMastercard'
               onClick={() => setCardInfo({ ...cardInfo, type: 'MasterCard' })}
               size='3em'
             />

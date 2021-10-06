@@ -35,6 +35,7 @@ export default function SeatingFooter({
           Hour: {'    '}
           <select
             id='hour-select'
+            role='hourSelect'
             onChange={e => getHour(e)}
             value={hour !== null ? hour : '2:00pm'}
           >

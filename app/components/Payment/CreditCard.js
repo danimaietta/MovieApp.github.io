@@ -25,7 +25,9 @@ export default function CreditCard({
         <div className='cardType' role='cardTypeRole'>
           {type === 'Visa' && <FaCcVisa size='4em' placeholder='visa' />}
           {type === 'Paypal' && <FaCcPaypal size='4em' placeholder='paypal' />}
-          {type === 'MasterCard' && <FaCcMastercard size='4em' />}
+          {type === 'MasterCard' && (
+            <FaCcMastercard size='4em' placeholder='master card' />
+          )}
         </div>
       </div>
       <div className='backSideCreditCard'>
