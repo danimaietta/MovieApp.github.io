@@ -58,7 +58,7 @@ export default function Home() {
   }
 
   return (
-    <div data-testid='home-container'>
+    <div role='home'>
       <SearchBox movies={allMovies} handler={dispatch} />
       {filterMovies.length === 0 ? (
         <div className=' container75 flex y-center center'>
@@ -70,6 +70,7 @@ export default function Home() {
             return (
               <Link
                 key={i}
+                role={`movie${i}`}
                 to={{
                   pathname: `/MovieApp/seating/${movie.idMovie}${movie.title}`,
                   search: `?id=${movie.idMovie}&movie=${movie.title}`,
