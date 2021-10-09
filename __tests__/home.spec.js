@@ -45,7 +45,7 @@ describe('Home', () => {
     expect(notFound).toBeTruthy()
   })
   test('Clicking a card redirects to a certain direction', async () => {
-    const allMovies = await getAllMovies()
+    const allMovies = await waitFor(() => getAllMovies())
     const movies = allMovies.map((m, i) => ({ ...m, idMovie: i + 1 }))
     const movie0 = await waitFor(() => screen.getByRole('movie0'))
     fireEvent.click(movie0)
