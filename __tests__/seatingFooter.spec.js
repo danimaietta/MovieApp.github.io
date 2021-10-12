@@ -1,8 +1,7 @@
 import React from 'react'
 import SeatingFooter from '../app/components/Seating/SeatingFooter'
-import { screen } from '@testing-library/dom'
-import { render, cleanup, fireEvent, prettyDOM } from '@testing-library/react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { screen, render, cleanup, fireEvent, prettyDOM } from '@testing-library/react'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 const idMovie = 1
 const movie = 'Karate Kid'

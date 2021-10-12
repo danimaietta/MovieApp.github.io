@@ -1,8 +1,14 @@
 import React from 'react'
 import LocaleContext from '../app/context/LocaleContext'
-import { screen, fireEvent, waitFor } from '@testing-library/dom'
-import { render, cleanup, prettyDOM } from '@testing-library/react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {
+  screen,
+  fireEvent,
+  waitFor,
+  render,
+  cleanup,
+  prettyDOM
+} from '@testing-library/react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import Home from '../app/components/Movies/Home'
 import Loading from '../app/components/Movies/Loading'
 import Card from '../app/components/Movies/Card'

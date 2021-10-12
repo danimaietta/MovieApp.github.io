@@ -1,7 +1,6 @@
 import React from 'react'
 import BackButton from '../app/components/BackButton'
-import { screen } from '@testing-library/dom'
-import { render, cleanup, fireEvent } from '@testing-library/react'
+import { screen, render, cleanup, fireEvent } from '@testing-library/react'
 
 const history = {
   goBack: jest.fn()

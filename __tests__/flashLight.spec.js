@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { screen } from '@testing-library/dom'
 import { render, cleanup, fireEvent } from '@testing-library/react'
 import FlashLight from '../app/components/Movies/FlashLight'

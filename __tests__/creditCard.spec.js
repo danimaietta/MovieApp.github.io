@@ -35,8 +35,6 @@ describe('Credit Card', () => {
   test('The icon rendered should be: FaCcVisa icon', () => {
     const cardType = screen.getByPlaceholderText(/visa/i)
     expect(cardType).toBeTruthy()
-    // how to test that it should not found:
-    // expect(screen.getByPlaceholderText(/paypal/i))
   })
   test('The text in the cvv element should be: 123', () => {
     const cvv = screen.getByText(/123/i)

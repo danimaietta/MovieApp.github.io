@@ -1,7 +1,6 @@
 import React from 'react'
 import SeatingHeader from '../app/components/Seating/SeatingHeader'
-import { screen } from '@testing-library/dom'
-import { render, cleanup, fireEvent, prettyDOM } from '@testing-library/react'
+import { screen, render, cleanup, fireEvent, prettyDOM } from '@testing-library/react'
 
 const seatingHeader = () => {
   render(<SeatingHeader movie='Karate Kid' theme='dark' />)

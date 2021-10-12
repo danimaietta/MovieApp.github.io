@@ -1,6 +1,5 @@
 import React from 'react'
-import { screen, fireEvent, cleanup } from '@testing-library/dom'
-import { render } from '@testing-library/react'
+import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import Card from '../app/components/Movies/Card'
 require('jest-fetch-mock').enableMocks()
 

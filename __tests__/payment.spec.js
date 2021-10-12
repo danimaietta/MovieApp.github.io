@@ -1,13 +1,9 @@
 import React from 'react'
 import Payment from '../app/components/Payment/Payment'
 import CreditCard from '../app/components/Payment/CreditCard'
-import BackButton from '../app/components/BackButton'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LocaleContext from '../app/context/LocaleContext'
-import { screen } from '@testing-library/dom'
-import { render, cleanup, fireEvent, prettyDOM } from '@testing-library/react'
+import { screen, render, cleanup, fireEvent, prettyDOM } from '@testing-library/react'
 import JSONSeats from '../app/utils/seating.json'
-import { months, years } from '../app/utils/utils'
 
 const theme = 'dark'
 const getJSONSeats = jest.fn((hour, id) => JSONSeats)
