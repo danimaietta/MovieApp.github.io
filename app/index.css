@@ -8,10 +8,10 @@
 }
 
 .row {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
           flex-direction: row;
+      -ms-flex-direction: row;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
 }
 
 .center {
@@ -52,12 +52,12 @@
 }
 
 .search-input {
-  width: 250px;
-  font-size: 1em;
-  text-indent: 5px;
-  border: none;
-  height: 40px;
   border-radius: 20px;
+  border: none;
+  font-size: 1em;
+  height: 40px;
+  text-indent: 5px;
+  width: 250px;
 }
 
 .search-input:hover {
@@ -109,32 +109,32 @@ img {
 }
 
 .creditCard {
-  position: relative;
+  height: 35vh;
   margin: 0 auto 0;
-  height: 25vh;
+  position: relative;
 }
 
 .frontSideCreditCard,
 .backSideCreditCard {
-  position: absolute;
-  display: inline-block;
+  background-color: #2d45ca;
   border-radius: 15px;
   border: solid black 1px;
+  display: inline-block;
+  position: absolute;
   width: 380px;
-  background-color: #2d45ca;
 }
 
 .frontSideCreditCard {
-  z-index: 2;
+  height: 25vh;
   left: 40vw;
-  height: 20vh;
+  z-index: 2;
 }
 
 .backSideCreditCard {
-  z-index: 1;
+  height: 27vh;
   left: 50vw;
   margin-top: 3vh;
-  height: 19vh;
+  z-index: 1;
 }
 
 .magneticStripe {
@@ -156,7 +156,7 @@ img {
   text-align: right;
   margin: 5% 5% 0;
   padding: 1%;
-  height: 2vh;
+  height: 3vh;
   border-radius: 3px;
   font-size: 1.1em;
   background-color: #a1a1a1;
@@ -403,6 +403,10 @@ body {
   font-family: fontawesome;
 }
 
+.container120 {
+  height: 120vh;
+}
+
 .container95 {
   height: 95vh;
   font-size: 1em;
@@ -449,12 +453,12 @@ li {
 }
 
 .switchBtn {
-  font-size: 25px;
-  margin: 5% 5%;
   border-radius: 35px;
-  height: 50px;
-  width: 50px;
   border: none;
+  font-size: 25px;
+  height: 50px;
+  margin: 5% 5%;
+  width: 50px;
 }
 
 .switchBtn:hover {
