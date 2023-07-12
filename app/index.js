@@ -32,7 +32,7 @@ function App() {
             <Route
               render={() => (
                 <div className='container95 align-center'>
-                  <h1 className=' margin0'>404 Not Found</h1>
+                  <h1 className='margin0'>404 Not Found</h1>
                   Click
                   <a
                     className='blue'

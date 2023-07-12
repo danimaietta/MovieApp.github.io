@@ -4,7 +4,7 @@ function Card({ poster }) {
   return (
     <div className='card'>
       <img
-        src={`https://www.cinecalidad.page/movies/static/img/w500${poster}`}
+        src={`https://image.tmdb.org/t/p/w500${poster}`}
         alt='card not found'
       />
     </div>

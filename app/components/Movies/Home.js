@@ -46,7 +46,7 @@ export default function Home() {
       }
     }
     getMovies().then(movies => {
-      if (isMounted) dispatch({ type: 'firstLoad', movies })
+      isMounted && dispatch({ type: 'firstLoad', movies })
     })
     return () => {
       isMounted = false
@@ -58,11 +58,11 @@ export default function Home() {
   }
 
   return (
-    <div role='home'>
+    <div>
       <SearchBox movies={allMovies} handler={dispatch} />
       {filterMovies.length === 0 ? (
         <div className=' container75 flex y-center center'>
-          <h2 className={`${classBtn}`}>Not movies found</h2>
+          <h2 className={classBtn}>Not movies found</h2>
         </div>
       ) : (
         <ul className='home-container'>
