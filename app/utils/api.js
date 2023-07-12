@@ -5,7 +5,7 @@ export function getAllMovies() {
   return fetch(`${APIUrl}/3/discover/movie?api_key=${APIKey}`)
     .then(res => res.json())
     .then(data => {
-      console.log(data.results)
+      //console.log(data.results)
       return data.results
     })
     .catch(error => console.log('getAllMovies', error))

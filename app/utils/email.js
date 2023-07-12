@@ -1,10 +1,10 @@
 import { send, init } from 'emailjs-com'
 import { months } from './utils'
 
-init('user_xGmxuVGkTxsGlfO5Nke6f')
+init('4HX0iPm0LYD5HmS-h')
 const sendEmail = ({ movie, price, seatNames, date, hour, email }) => {
   return send(
-    'service_h10tdd8',
+    'service_wyzwz33',
     'template_wjrhujl',
     {
       movie,
@@ -16,7 +16,7 @@ const sendEmail = ({ movie, price, seatNames, date, hour, email }) => {
       email,
       code: `${seatNames.toString()} - ${Math.random() * 10}`
     },
-    'user_xGmxuVGkTxsGlfO5Nke6f'
+    '4HX0iPm0LYD5HmS-h'
   )
 }
 

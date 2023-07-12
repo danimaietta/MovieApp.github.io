@@ -11,7 +11,6 @@ import {
 import { months, years } from '../../utils/utils'
 import sendEmail from '../../utils/email'
 import LocaleContext from '../../context/LocaleContext'
-import QRcode from 'qrcode.react'
 
 // PropTypes in this case?
 export default function Payment(props) {
@@ -76,24 +75,16 @@ export default function Payment(props) {
   }
 
   const saveReservation = () => {
+    const letters = ['A', 'B', 'C', 'D', 'E', 'F']
+    const numbers = [0, 6, 12, 18, 30, 36]
     for (let i = 0; i < seatNames.length; i = i + 3) {
       const seat = seatNames.substring(i, i + 3)
-      const letter = seat.substring(0, 1)
+      const seatLetter = seat.substring(0, 1)
       const number = parseInt(seat.substring(1, 2))
-      const res =
-        letter == 'A'
-          ? 0
-          : letter == 'B'
-          ? 6
-          : letter == 'C'
-          ? 12
-          : letter == 'D'
-          ? 18
-          : letter == 'E'
-          ? 24
-          : letter == 'F'
-          ? 30
-          : 36
+      const res = letters.map((letter, i) => {
+        return seatLetter === letter ? numbers[i] : numbers[5]
+      })
+      console.log(res)
       seats[res + number - 1] = 1
     }
   }
