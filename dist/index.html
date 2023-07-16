@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Movies</title>
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAFiS0dEAIgFHUgAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjAtMDMtMTNUMTI6MTY6MDQrMDA6MDDEKEBDAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIwLTAzLTEzVDEyOjE2OjA0KzAwOjAwtXX4/wAAAEZ0RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi43LjgtOSAyMDE0LTA1LTEyIFExNiBodHRwOi8vd3d3LmltYWdlbWFnaWNrLm9yZ9yG7QAAAAAYdEVYdFRodW1iOjpEb2N1bWVudDo6UGFnZXMAMaf/uy8AAAAYdEVYdFRodW1iOjpJbWFnZTo6aGVpZ2h0ADE5Mg8AcoUAAAAXdEVYdFRodW1iOjpJbWFnZTo6V2lkdGgAMTky06whCAAAABl0RVh0VGh1bWI6Ok1pbWV0eXBlAGltYWdlL3BuZz+yVk4AAAAXdEVYdFRodW1iOjpNVGltZQAxNTg0MTAxNzY0O7C92gAAAA90RVh0VGh1bWI6OlNpemUAMEJClKI+7AAAAFZ0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL21udGxvZy9mYXZpY29ucy8yMDIwLTAzLTEzL2NkNjhjNjdmMzE4YmNhMDgzMGRkM2ZhN2ExZWJhM2Q0Lmljby5wbmfo47PdAAACRElEQVQ4T52T309SYRjHv+ccJOCOsXFvQ9CFNrqAcmN5R6MdhSXLC7a8M9nSrjRt+l9g3OCfUE1o0pZ5ITQ2lpXFMNuAMWZ5xRgb4zDg7X3fc1ZqGdXn7N3763mf9/s8z3sEQkEfOp0OMpkMdl/vYiowBZfLpe0AotZfSLFYRDwehyRJOP56jFTqpbajcqGDRqOBZCKJhQcLeP/uA1dx8u0ElwcHNQsVndb/oNfrUblvkM/n4XReQUtpYX//LcxmM1Yfr8LtdmuWKmcUVKtVRKNRzN6b5TeWiiWIgoj5SAQrK4/g8XggCIJmrcIVtFotbG0loNDbms0mjzWZSMDr9WLjyQZsNhs3/i3dbpesr60Tj/s6yX/Kk8h8hEzKk2Tn1Q5pt9usSH+El3EzvolYLEbLcw0jI8MIBAOwWq08H/QCUBNeBe1CHobRaIRerwd3wGQHA0EcHHxEKDSNIfsQqBocHX3B+PgNWCwWZLNZmpcun9dqNZhMJiwtL6lJ1Ol0GBjQw2G3Y+7+HH8ouVwOY1fHsPhwEQaDAYeHnzEzcxfhcBjlchnpdEZVwxTQWDF9J4R6vY7RUSf29tIolUqQZZkevoRk8gVXMTFxE5VKBdvbKfh8Pjx7/hQsPqIoCpFvy+xJ8yZAJJKgo2OBz0VBIiIkbV9d89/yE1o9un4OepDXXh1LfC6wjyaOjdnaaX46OPdA/pZfFPwrpxyw0Oi/QHp9G4MmSg2NJZE9mBTNbKFQgCj2F8XsHcMO+P1+1YG2/h8A3wHAlTlYlLmVAgAAAABJRU5ErkJggg==
-            "
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="text/javascript" src="/index_bundle.js"></script
-  ></body>
+    <head>
+        <title>Movies</title>
+        <link 
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAFiS0dEAIgFHUgAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjAtMDMtMTNUMTI6MTY6MDQrMDA6MDDEKEBDAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIwLTAzLTEzVDEyOjE2OjA0KzAwOjAwtXX4/wAAAEZ0RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi43LjgtOSAyMDE0LTA1LTEyIFExNiBodHRwOi8vd3d3LmltYWdlbWFnaWNrLm9yZ9yG7QAAAAAYdEVYdFRodW1iOjpEb2N1bWVudDo6UGFnZXMAMaf/uy8AAAAYdEVYdFRodW1iOjpJbWFnZTo6aGVpZ2h0ADE5Mg8AcoUAAAAXdEVYdFRodW1iOjpJbWFnZTo6V2lkdGgAMTky06whCAAAABl0RVh0VGh1bWI6Ok1pbWV0eXBlAGltYWdlL3BuZz+yVk4AAAAXdEVYdFRodW1iOjpNVGltZQAxNTg0MTAxNzY0O7C92gAAAA90RVh0VGh1bWI6OlNpemUAMEJClKI+7AAAAFZ0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL21udGxvZy9mYXZpY29ucy8yMDIwLTAzLTEzL2NkNjhjNjdmMzE4YmNhMDgzMGRkM2ZhN2ExZWJhM2Q0Lmljby5wbmfo47PdAAACRElEQVQ4T52T309SYRjHv+ccJOCOsXFvQ9CFNrqAcmN5R6MdhSXLC7a8M9nSrjRt+l9g3OCfUE1o0pZ5ITQ2lpXFMNuAMWZ5xRgb4zDg7X3fc1ZqGdXn7N3763mf9/s8z3sEQkEfOp0OMpkMdl/vYiowBZfLpe0AotZfSLFYRDwehyRJOP56jFTqpbajcqGDRqOBZCKJhQcLeP/uA1dx8u0ElwcHNQsVndb/oNfrUblvkM/n4XReQUtpYX//LcxmM1Yfr8LtdmuWKmcUVKtVRKNRzN6b5TeWiiWIgoj5SAQrK4/g8XggCIJmrcIVtFotbG0loNDbms0mjzWZSMDr9WLjyQZsNhs3/i3dbpesr60Tj/s6yX/Kk8h8hEzKk2Tn1Q5pt9usSH+El3EzvolYLEbLcw0jI8MIBAOwWq08H/QCUBNeBe1CHobRaIRerwd3wGQHA0EcHHxEKDSNIfsQqBocHX3B+PgNWCwWZLNZmpcun9dqNZhMJiwtL6lJ1Ol0GBjQw2G3Y+7+HH8ouVwOY1fHsPhwEQaDAYeHnzEzcxfhcBjlchnpdEZVwxTQWDF9J4R6vY7RUSf29tIolUqQZZkevoRk8gVXMTFxE5VKBdvbKfh8Pjx7/hQsPqIoCpFvy+xJ8yZAJJKgo2OBz0VBIiIkbV9d89/yE1o9un4OepDXXh1LfC6wjyaOjdnaaX46OPdA/pZfFPwrpxyw0Oi/QHp9G4MmSg2NJZE9mBTNbKFQgCj2F8XsHcMO+P1+1YG2/h8A3wHAlTlYlLmVAgAAAABJRU5ErkJggg=="
+        >
+        <link rel="stylesheet" type="text/css" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body id="app">
+    <script type="text/javascript" src="/index_bundle.js"></script></body>
 </html>
